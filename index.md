@@ -1,6 +1,6 @@
 ## **Meganeura**
 
-Check our upcoming game [Farm](http://meganeuragames.com/farm)!
+Check our upcoming game [Farm Your Friends](http://meganeuragames.com/farm)!
 
 ```markdown
 Hello
