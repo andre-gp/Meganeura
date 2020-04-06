@@ -1,0 +1,95 @@
+#artigo{
+	width: 75%;
+	float: right;
+}
+
+#primeiro{
+width: 45%;
+float: left;
+background-color: #FFCD92;
+	padding: 5px;
+	margin: 10px;
+	border: 5px solid #B28755;
+	border-radius: 20px;
+}
+
+#segundo{
+width:45%;
+float:right;
+background-color: #FFCD92;
+	padding: 5px;
+	margin: 10px;
+	border: 5px solid #B28755;
+	border-radius: 20px;
+}
+
+body{
+	background-image: url("rosa.jpg");
+	background-attachment: fixed;
+background-color:#92DEFF;
+font-family: "Courier New";
+
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+#wrapper{
+width: 100%;
+margin: 0 auto;
+
+}
+
+header{
+color: #4A93B2;
+text-align: center;
+text-transform: uppercase;
+font-family: "Times New Roman";
+letter-spacing: 5px;
+word-spacing: 10px;
+
+}
+
+nav {
+width: 22%;
+float: left;
+background-color: #39B2A5;
+border-bottom: 6px solid #A2FFF5;
+padding: 10px;
+margin: 10px;
+word-spacing: 5px;
+position: fixed;
+text-align: left;
+text-decoration: none;
+
+}
+
+
+p{color:#000000;}
+
+footer{
+clear: both;
+background-image: url("ninja.png");
+background-repeat: no-repeat;
+background-size: contain;
+background-color: #74B2A5;
+text-align:center;
+font-style: italic;
+color:#B28C55;
+padding: 5px;
+}
+
+a:link, a:visited{
+ background-color: #39B2A5;
+    color: #92FFE8;
+    padding: 10px 10px;
+    margin:3px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: #80E59F;
+}
