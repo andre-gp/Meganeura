@@ -42,13 +42,15 @@
 				<div id="wrap1">
 					<div class="main">
 				
-					<video autoplay muted loop src="Images/Site.mp4" type="video/mp4"></video>
+					<video autoplay muted loop poster="Images/Prints/print4.png" src="Images/Site.mp4" type="video/mp4"></video>
 					
 					<div class="maininfo">
 					<div class="content">
 					<h1>Welcome!</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut convallis metus id justo vulputate, ac fringilla purus consectetur. Aenean sed purus cursus, condimentum nibh vitae, faucibus nisi. Aliquam ac nibh eu lectus vestibulum facilisis. Cras blandit lectus eget dolor suscipit, vestibulum maximus nunc congue. Ut et malesuada leo. Proin et dui a enim suscipit sagittis. Curabitur porttitor malesuada ipsum a consequat. Nam non lacus in urna dignissim porta at id magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non tellus nec lacus vulputate lobortis at eget justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse aliquet enim vitae eros vestibulum varius.</p>
-					<a class="button" href="Farm.html">
+					<p>We are Meganeura Games, a group of independent students from Belo Horizonte, Brazil.</p>
+					<p>Currently, we are working on Farm Your Friends, wich soon will be available on Steam!</p>
+					<p>You can add it to your Steam's wishlist</p>
+					<a class="button" href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -70,9 +72,57 @@
 				</div>
 				
 				<div class="block2">
-				<p>Gameplay: Farm Your Friends matches lasts 5 minutes, making it a frenetic and chaotic experience. Try selling as much as you can to be the winner while facing other players. You have to find the balance between taking care of your farm and sabotaging the other's - but you won't have time to think it through.</p>
+				<p>The matches lasts 5 minutes, making it a frenetic and chaotic experience. Try selling as much as you can to be the winner while facing other players. You have to find the balance between taking care of your farm and sabotaging the other's - but you won't have time to think it through.</p>
 				<img src="Images/rooster_1.png"/>
 				</div>
+				
+				<div class="gallery-container">
+					<div class="slide-img fade">
+					<img src="Images/Prints/print1.png"/>
+					</div>
+					
+					<div class="slide-img fade">
+					<img src="Images/Prints/print2.png"/>
+					</div>
+					
+					<div class="slide-img fade">
+					<img src="Images/Prints/print3.png"/>
+					</div>
+					
+					<div class="slide-img fade">
+					<img src="Images/Prints/print4.png"/>
+					</div>
+					
+					<div class="slide-img fade">
+					<video controls src="Images/Site.mp4" type="video/mp4"></video>
+					</div>
+					
+					<a class="prev" onclick="plusSlides(-1)"><</a>
+					<a class="next" onclick="plusSlides(1)">></a>
+					
+					<div class="preview">
+						<div class="preview-img">
+						<img class="demo cursor" src="Images/Prints/print1.png" onClick="currentSlide(1)"/>
+						</div>
+						
+						<div class="preview-img">
+						<img class="demo cursor" src="Images/Prints/print2.png" onClick="currentSlide(2)"/>
+						</div>
+						
+						<div class="preview-img">
+						<img class="demo cursor" src="Images/Prints/print3.png" onClick="currentSlide(3)"/>
+						</div>
+						
+						<div class="preview-img">
+						<img class="demo cursor" src="Images/Prints/print4.png" onClick="currentSlide(4)"/>
+						</div>
+						
+						<div class="preview-img">
+						<img class="demo cursor" src="Images/Prints/Thumbnail-vid.jpg" onClick="currentSlide(5)"/>
+						</div>
+					</div>
+				</div>
+				
 				
 				</div>
 				
@@ -109,7 +159,34 @@
 				
 	</div>
 	
-	
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("slide-img");
+  var dots = document.getElementsByClassName("demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
 </body>
 
 
@@ -122,8 +199,8 @@
 	<p>Find us in social media</p>
 	<div class="icon">
 	<a href="https://www.instagram.com/meganeuragames/"><i class="fab fa-instagram"></i></a>
-	<i class="fab fa-steam-symbol"></i>
-	<a href="https://twitter.com/MeganeuraGames"><i class="fab fa-twitter"></i></a>
+	<a href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/"><i class="fab fa-steam-symbol"></i>
+	<a href="https://twitter.com/FarmYourFriends"><i class="fab fa-twitter"></i></a>
 	</div>
 	</div>
 </footer>

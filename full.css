@@ -6,6 +6,20 @@ body, html{
 	scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1b998b;
+    transition: all .25s ease;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+/*------------------------------------ANIMATION------------------------------------*/
+
 @keyframes logoanimation {
 	from{
 		opacity: 0%;
@@ -37,6 +51,16 @@ body, html{
 	}
 }
 
+@keyframes fade{
+	from{
+		opacity: 50%;
+	}
+	to{
+		opacity: 100%;
+	}
+}
+
+/*------------------------------------LOGO------------------------------------*/
 
 #logo{
 	background-color: #0A0A0A;
@@ -68,6 +92,8 @@ body, html{
 	width:30%;
 }
 
+/*------------------------------------MENU------------------------------------*/
+
 .menu{
 	font-family: 'Roboto', sans-serif;
 	font-weight:300;
@@ -78,7 +104,7 @@ body, html{
 	top: 0;
 	z-index:1;
 	padding: 0;
-	box-shadow: 0px 8px 15px 2px rgba(10,10,10,0.75);;
+	box-shadow: 0px 3px 20px 2px rgba(10,10,10,0.75);;
 }
 
 .menu a{
@@ -100,13 +126,13 @@ body, html{
 	color: #1b998b;
 }
 
+/*------------------------------------HOME------------------------------------*/
+
 #wrap1{
 	width: 100%;
 	height:100vh;
 	margin:0;
 	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 .main{
@@ -131,26 +157,32 @@ body, html{
 	transform: translate(-50%, -50%);
 }
 
+
 .content{
 	padding: 30px;
+	width:100%;
 	margin: auto;
 	z-index: 0;
 	text-align: center;
 	background-color:#fff;
 	opacity: 90%;
-	font-family: 'Rajdhani', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5), 0 6px 20px 0 rgba(0,0,0,0.5);
 }
 
 .content h1{
 	text-transform: uppercase;
-	font-weight:100;
+	font-weight:300;
+	letter-spacing: 5px;
 }
 
 .content p{
+	text-transform: uppercase;
+	font-size:12px;
+	letter-spacing: 2px;
 	margin-left: 10%;
 	margin-right: 10%;	
-	padding-bottom: 20px;
+	line-height:1.6;
 }
 
 .button{
@@ -233,6 +265,8 @@ body, html{
 	transition-delay: 0.75s;
 }
 
+/*------------------------------------FARM YOUR FRIENDS------------------------------------*/
+
 #wrap2{
 	width: 100%;
 	margin:0;
@@ -249,10 +283,12 @@ body, html{
 .block1{
 	display: flex;
 	flex-flow: row nowrap;
-	padding:30px;
+	padding-top:50px;
 	align-content: center;
 	align-items:center;
 	width:100%;
+	padding-left:5%;
+	padding-right:5%;
 }
 .block1 img{
 	width:50%;
@@ -267,10 +303,13 @@ body, html{
 .block2{
 	display: flex;
 	flex-flow: row nowrap;
-	padding:30px;
+	padding-top:30px;
+	padding-bottom:30px;
 	align-content: center;
 	align-items:center;
 	width:100%;
+	padding-left:5%;
+	padding-right:5%;
 	
 }
 .block2 img{
@@ -286,39 +325,126 @@ body, html{
 	padding-left:30px;
 }
 
+.gallery-container{
+	position:relative;
+	margin-left: 20%;
+	margin-right:20%;
+	padding-bottom: 50px;
+	line-height:0;
+}
+.gallery-container img{
+	vertical-align: middle;
+	width:100%;
+	
+}
+
+.gallery-container video{
+	width:100%;
+	height:100%;
+	display:block;
+	margin:0;
+}
+
+.slide-img{
+	display:none;
+	margin:0;
+}
+
+.fade{
+	animation-name: fade;
+	animation-fill-mode: both;
+	animation-duration: 1s;
+}
+
+.cursor{
+	cursor: pointer;
+}
+
+.prev, .next{
+	cursor:pointer;
+	position: absolute;
+	top:40%;
+	width: auto;
+	padding:20px;
+	margin-top: -50px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.next{
+	right:0;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover{
+	background-color: #000;
+}
+
+.preview{
+	content: "";
+	display:table;
+	clear: both;
+}
+
+.preview-img{
+	float:left;
+	width:20%;
+}
+
+.demo{
+	opacity: 0.6;
+}
+
+.active, demo:hover{
+	opacity:1;
+}
+/*------------------------------------ABOUT US------------------------------------*/
+
 #wrap3{
 	width: 100%;
 	height:100vh;
 	margin:0;
 	display: flex;
 	background-color: #0F574E;
-	text-transform: uppercase;
 	font-family: 'Roboto', sans-serif;
 	color: #F4F5F5;
 	font-weight: 300;
-	padding: 30px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-left:5%;
+	padding-right:5%;
 	line-height: 1.6;
+	align-items: center;
+	align-content: center;
 }
 
 #wrap3 h1{
 	font-weight: 100;
 	letter-spacing: 5px;
+	text-transform: uppercase;
+}
+
+#wrap3 p{
+	letter-spacing:2px;
 }
 
 .div1{
 	text-align: justify;
 	display: block;
 	width: 50%;
-	padding: 40px;
 }
 .div2{
 	align-content: flex-end;
 	text-align: right;
 	display: block;
 	width: 50%;
-	padding: 40px;
 }
 
+/*------------------------------------CONTACT------------------------------------*/
 
 #wrap4{
 	width: 100%;
@@ -383,7 +509,12 @@ body, html{
 	color: #c6e0ff;
 	border: none;
 	border-radius: 20px;
+	text-transform: uppercase;
+	letter-spacing:2px;
+	font-size:20px;
 }
+
+/*------------------------------------FOOTER------------------------------------*/
 
 footer{
 	background-color: #0A0A0A;
