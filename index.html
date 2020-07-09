@@ -14,6 +14,8 @@
 <script src="https://kit.fontawesome.com/af3445f2f8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="full.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 
@@ -23,6 +25,7 @@
 <div id="logo">
 <img id="megalogo" src="Images/logo_meganeura.png"/>
 <img id="titulo" src="Images/logo_name.png"/>
+<a class="menu-icon" onClick="toggleMenu()"><i class="fas fa-bars"></i></a>
 </div>
 
 </header>
@@ -31,18 +34,20 @@
 	
 <div id="wrapper">
 	
-	<div class="menu">
-	<a href="#wrap1">Home</a>
-	<a href="#wrap2">Farm Your Friends</a>
-	<a href="#wrap3">About Us</a>
-	<a href="#wrap4">Contact</a>
-	</div>
+		<div class="menu" id="menu">
+		<a onClick="toggleMenu()" href="#wrap1">Home</a>
+		<a onClick="toggleMenu()" href="#wrap2">Farm Your Friends</a>
+		<a onClick="toggleMenu()" href="#wrap3">About Us</a>
+		<a onClick="toggleMenu()" href="#wrap4">Contact</a>
+		</div>
 	
 	
 				<div id="wrap1">
 					<div class="main">
 				
-					<video autoplay muted loop poster="Images/Prints/print4.png" src="Images/Site.mp4" type="video/mp4"></video>
+					<video id="bg-video" autoplay muted loop poster="Images/Prints/print4.png">
+					<source src="Images/Site.mp4" type="video/mp4">
+					</video>
 					
 					<div class="maininfo">
 					<div class="content">
@@ -68,7 +73,7 @@
 				
 				<div class="block1">
 				<img src="Images/logo1.7_bordapreta.png"/>
-				<p>Farm Your Friends is a fast-paced couch competitive farming game for up to 8 players. This farming life isn't as calm and peaceful as you'd expect: to become the best farmer you will need unusual methods to prevent your enemies from succeding.<p/>
+				<p>Farm Your Friends is a fast-paced couch competitive farming game for 4 players. This farming life isn't as calm and peaceful as you'd expect: to become the best farmer you will need unusual methods to prevent your enemies from succeding.<p/>
 				</div>
 				
 				<div class="block2">
@@ -130,7 +135,7 @@
 				<div id="wrap3">
 				<div class="div1">
 				<h1>About Us</h1>
-				<p>We are five independent game developers with a dream of making amazing games. We've met during game design college in Belo Horizonte and since then we've been working together as an indie studio called Meganeura Games. Our first game is Farm Your Friends, a fast-paced competitive farming game for up to 8 players.</p>
+				<p>We are five independent game developers with a dream of making amazing games. We've met during game design college in Belo Horizonte and since then we've been working together as an indie studio called Meganeura Games. Our first game is Farm Your Friends, a fast-paced competitive farming game for 4 players.</p>
 				</div>
 				
 				<div class="div2">
@@ -159,7 +164,7 @@
 				
 	</div>
 	
-<script>
+<script type="text/javascript">
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -186,6 +191,49 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+
+if (window.innerWidth <= 600){
+var vid = document.getElementById("bg-video");
+vid.autoplay = false;
+vid.preload = "none";
+vid.style.display = "none";
+}
+
+function toggleMenu(){
+var menuBox = document.getElementById('menu');
+if (window.innerWidth <= 600){
+	if (menuBox.style.display == "flex"){
+		menuBox.style.display = "none";
+	}
+	else{
+	menuBox.style.display = "flex";
+	}
+}
+}
+
+$(document).ready(function() {
+    // run test on initial page load
+    checkSize();
+
+    // run test on resize of the window
+    $(window).resize(checkSize);
+});
+
+//Function to the css rule
+function checkSize(){
+var menu = document.getElementById('menu');
+    if ($(".menu").css("display") == "none" && window.innerWidth > 600){
+        menu.style.display = "flex";
+		location.reload();
+    }
+	
+	if ($(".menu").css("display") == "flex" && window.innerWidth <= 600){
+        menu.style.display = "none";
+		location.reload();
+    }
+}
+
+
 </script>
 </body>
 
