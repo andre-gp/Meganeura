@@ -53,7 +53,7 @@
 					<div class="content">
 					<h1>Welcome!</h1>
 					<p>We are Meganeura Games, a group of independent students from Belo Horizonte, Brazil.</p>
-					<p>Currently, we are working on Farm Your Friends, wich soon will be available on Steam!</p>
+					<p>Currently, we are working on Farm Your Friends, which soon will be available on Steam!</p>
 					<p>You can add it to your Steam's wishlist</p>
 					<a class="button" href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/">
 					<span></span>
@@ -99,7 +99,7 @@
 					</div>
 					
 					<div class="slide-img fade">
-					<video controls src="Images/Site.mp4" type="video/mp4"></video>
+					<video controls disablePictureInPicture controlsList="nodownload" src="Images/Site.mp4" type="video/mp4"></video>
 					</div>
 					
 					<a class="prev" onclick="plusSlides(-1)"><</a>
@@ -233,6 +233,9 @@ var menu = document.getElementById('menu');
     }
 }
 
+window.onorientationchange = function(event) { 
+  location.reload();
+};
 
 </script>
 </body>
