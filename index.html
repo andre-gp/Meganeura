@@ -83,18 +83,22 @@
 				
 				<div class="gallery-container">
 					<div class="slide-img fade">
+					<a class="teste" onClick="openModal(); currentModal(1)"><i class="fas fa-expand"></i></a>
 					<img src="Images/Prints/print1.png"/>
 					</div>
 					
 					<div class="slide-img fade">
+					<a class="teste" onClick="openModal(); currentModal(2)"><i class="fas fa-expand"></i></a>
 					<img src="Images/Prints/print2.png"/>
 					</div>
 					
 					<div class="slide-img fade">
+					<a class="teste" onClick="openModal(); currentModal(3)"><i class="fas fa-expand"></i></a>
 					<img src="Images/Prints/print3.png"/>
 					</div>
 					
 					<div class="slide-img fade">
+					<a class="teste" onClick="openModal(); currentModal(4)"><i class="fas fa-expand"></i></a>
 					<img src="Images/Prints/print4.png"/>
 					</div>
 					
@@ -128,6 +132,34 @@
 					</div>
 				</div>
 				
+				<!-- MODAL GALLERY-->
+					<div id="myModal" class="modal">
+					<span class="close cursor" onClick="closeModal()">&times;</span>
+						<div class="modal-content">
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print1.png"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print2.png"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print3.png"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print4.png"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<video controls disablePictureInPicture controlsList="nodownload" src="Images/Site.mp4" type="video/mp4"></video>
+								</div>
+								
+								<a class="modalprev" onclick="plusModal(-1)"><</a>
+								<a class="modalnext" onclick="plusModal(1)">></a>
+						</div>
+						</div>
 				
 				</div>
 				
@@ -140,7 +172,7 @@
 				
 				<div class="div2">
 				<h1>The team is composed by:</h1>
-				<p>André Gonçalves Pacheco<br>Programmer<br><br>Hygor Augusto dos Reis<br>UI Artist and Character Artist<br><br>Luisa Miranda dos Santos Pacheco<br>3D Animator and Rigger<br><br>Mariana Soares Mateus<br>Object Artist and Scenario Designer<br><br>Sarah Ramos de Araújo<br>VFX Artist and Sound Designer</p>
+				<p>ANDRÉ GONÇALVES PACHECO<br>Programmer<br><br>HYGOR AUGUSTO REIS ANDRADE<br>UI Artist and Character Artist<br><br>LUISA MIRANDA DOS SANTOS PACHECO<br>3D Animator and Rigger<br><br>MARIANA SOARES MATEUS<br>Object Artist and Scenario Designer<br><br>SARAH RAMOS DE ARAÚJO<br> VFX Artist, Music and Sound Designer</p>
 				</div>
 				</div>
 				
@@ -201,12 +233,14 @@ vid.style.display = "none";
 
 function toggleMenu(){
 var menuBox = document.getElementById('menu');
+var modalPage = document.getElementById("myModal");
 if (window.innerWidth <= 600){
 	if (menuBox.style.display == "flex"){
 		menuBox.style.display = "none";
 	}
 	else{
 	menuBox.style.display = "flex";
+		if(modalPage.style.display == "block"){modalPage.style.display = "none"}
 	}
 }
 }
@@ -233,9 +267,40 @@ var menu = document.getElementById('menu');
     }
 }
 
-window.onorientationchange = function(event) { 
-  location.reload();
-};
+//MODAL GALLERY
+
+function openModal(){
+	document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal(){
+	document.getElementById("myModal").style.display = "none";
+}
+
+var modalIndex = 1;
+modalSlides(modalIndex);
+
+// Next/previous controls
+function plusModal(n) {
+  modalSlides(modalIndex += n);
+}
+
+// Thumbnail image controls
+function currentModal(n) {
+  modalSlides(modalIndex = n);
+}
+
+function modalSlides(n){
+var i;
+var modalS = document.getElementsByClassName("modal-slide-img");
+
+if (n > modalS.length){modalIndex = 1}
+if (n < 1) {modalIndex = modalS.length}
+for (i = 0; i < modalS.length; i++){
+	modalS[i].style.display = "none";
+}
+modalS[modalIndex-1].style.display = "block";
+}
 
 </script>
 </body>
