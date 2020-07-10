@@ -81,7 +81,7 @@ body, html{
 }
 
 /*Para telas muito pequenas*/
-@media screen and (max-device-width: 419px) and (orientation:portrait){
+@media screen and (max-width: 419px) and (orientation:portrait){
 /*------------------------------------LOGO------------------------------------*/
 
 #logo{
@@ -591,7 +591,7 @@ footer{
 }
 }
 
-@media screen and (max-device-width: 419px) and (orientation:landscape){
+@media screen and (max-width: 419px) and (orientation:landscape){
 /*------------------------------------LOGO------------------------------------*/
 
 #logo{
@@ -1103,7 +1103,7 @@ footer{
 }
 
 /*Celular*/
-@media screen and (min-device-width: 420px)and (max-device-width: 600px) and (orientation:portrait){
+@media screen and (min-width: 420px)and (max-width: 600px) and (orientation:portrait){
 	
 /*------------------------------------LOGO------------------------------------*/
 
@@ -1610,7 +1610,7 @@ footer{
 
 }
 
-@media screen and (min-device-width: 420px)and (max-device-width: 600px) and (orientation:landscape){
+@media screen and (min-width: 420px) and (max-width: 600px) and (orientation:landscape){
 /*------------------------------------LOGO------------------------------------*/
 
 #logo{
