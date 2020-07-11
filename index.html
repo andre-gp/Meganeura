@@ -270,11 +270,27 @@ var menu = document.getElementById('menu');
 //MODAL GALLERY
 
 function openModal(){
+	var menu = document.getElementById('menu');
+	var logomenu = document.getElementById('logo');
 	document.getElementById("myModal").style.display = "block";
+	
+	if (document.getElementById("myModal").style.display == "block" && window.innerWidth <= 600){
+		logomenu.style.display = "none";
+		document.getElementById("myModal").style.marginTop = "0";
+		
+		if(menu.style.display == "flex"){
+		menu.style.display = "none";
+		}
+	}
 }
 
 function closeModal(){
+	var logomenu = document.getElementById('logo');
 	document.getElementById("myModal").style.display = "none";
+	
+	if (document.getElementById("myModal").style.display == "none" && window.innerWidth <= 600){
+		logomenu.style.display = "flex";
+	}
 }
 
 var modalIndex = 1;

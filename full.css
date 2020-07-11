@@ -357,7 +357,7 @@ body, html{
 	background-color: black;
 	padding-top: 50px;
 	overflow: auto;
-	margin-top:50px;
+	margin-top:"";
 }
 .modalprev, .modalnext{
 	cursor:pointer;
@@ -867,7 +867,7 @@ footer{
 	background-color: black;
 	padding-top: 50px;
 	overflow: auto;
-	margin-top:50px;
+	margin-top:"";
 }
 .modalprev, .modalnext{
 	cursor:pointer;
@@ -1368,7 +1368,7 @@ footer{
 }
 /* -------------------MODAL BACKGROUND-------------------*/
 .modal{
-	margin-top:65px;
+	margin-top:"";
 	display: none;
 	position: fixed;
 	z-index: 1;
@@ -1874,7 +1874,7 @@ footer{
 }
 /* -------------------MODAL BACKGROUND-------------------*/
 .modal{
-	margin-top:65px;
+	margin-top:"";
 	display: none;
 	position: fixed;
 	z-index: 1;
