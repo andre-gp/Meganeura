@@ -160,7 +160,7 @@ body, html{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -232,7 +232,7 @@ body, html{
 }
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -437,7 +437,7 @@ body, html{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -453,14 +453,14 @@ body, html{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 	font-size:20px;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 	font-size:12px;
 }
@@ -471,7 +471,7 @@ body, html{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -660,7 +660,7 @@ footer{
 	width:100%;
 	text-align: center;
 	text-decoration: none;
-	padding: 20px;
+	padding: 10px;
 	color: #1b998b;
 }
 .menu a:active{
@@ -670,7 +670,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -742,7 +742,7 @@ footer{
 }
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -947,7 +947,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -963,14 +963,14 @@ footer{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 	font-size:20px;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 	font-size:12px;
 }
@@ -981,14 +981,13 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	margin:0;
 	display: flex;
-	/*background-color: #EBEBEB;*/
-	background-color: blue;
+	background-color: #EBEBEB;
 	align-items: center;
 	justify-content: center;
 }
@@ -1183,7 +1182,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -1254,7 +1253,7 @@ footer{
 }
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -1459,7 +1458,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -1475,13 +1474,13 @@ footer{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 }
 
@@ -1491,7 +1490,7 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -1679,7 +1678,7 @@ footer{
 	width:100%;
 	text-align: center;
 	text-decoration: none;
-	padding: 20px;
+	padding: 15px;
 	color: #1b998b;
 }
 .menu a:active{
@@ -1689,7 +1688,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -1760,7 +1759,7 @@ footer{
 }
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -1965,7 +1964,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -1981,13 +1980,13 @@ footer{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 }
 
@@ -1996,14 +1995,13 @@ footer{
 }
 
 /*------------------------------------CONTACT------------------------------------*/
-#wrap4{
+#Contact{
 	width: 100%;
 	padding-top: 65px;
 	padding-bottom: 65px;
 	margin:0;
 	display: flex;
-	/*background-color: #EBEBEB;*/
-	background-color: red;
+	background-color: #EBEBEB;
 	align-items: center;
 	justify-content: center;
 }
@@ -2191,7 +2189,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -2252,85 +2250,21 @@ footer{
 	position: relative;
 	display: inline-block;
 	padding: 15px 30px;
-	color: #1b998b;
+	color: #c6e0ff;
+	background: #1b998b;
+	box-shadow: 0 0 10px #c6e0ff, 0 0 40px, #c6e0ff, 0 0 80px #c6e0ff;
+	border: none;
+	border-radius: 30px;
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	text-decoration: none;
 	font-size: 24px;
 	overflow: hidden;
-	transition: 0.2s;
-}
-
-.button:hover{
-	color: #c6e0ff;
-	background: #1b998b;
-	box-shadow: 0 0 10px #c6e0ff, 0 0 40px, #c6e0ff, 0 0 80px #c6e0ff;
-	transition-delay: 1.3s;
-}
-
-.button span{
-	position: absolute;
-	display: block;
-}
-
-.button span:nth-child(1){
-	top:0;
-	left: -100%;
-	width: 100%;
-	height: 2px;
-	background: linear-gradient(90deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(1){
-	left: 100%;
-	transition: 1s;
-}
-
-.button span:nth-child(3){
-	bottom:0;
-	right: -100%;
-	width: 100%;
-	height: 2px;
-	background: linear-gradient(270deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(3){
-	right: 100%;
-	transition: 1s;
-	transition-delay: 0.5s;
-}
-
-.button span:nth-child(2){
-	top: -100%;
-	right: 0;
-	width: 2px;
-	height: 100%;
-	background: linear-gradient(180deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(2){
-	top: 100%;
-	transition: 1s;
-	transition-delay: 0.25s;
-}
-
-.button span:nth-child(4){
-	bottom: -100%;
-	left: 0;
-	width: 2px;
-	height: 100%;
-	background: linear-gradient(360deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(4){
-	bottom: 100%;
-	transition: 1s;
-	transition-delay: 0.75s;
 }
 
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -2534,7 +2468,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -2550,13 +2484,13 @@ footer{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 }
 
@@ -2566,7 +2500,7 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	height: 100vh;
 	margin:0;
@@ -2765,7 +2699,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -2826,85 +2760,21 @@ footer{
 	position: relative;
 	display: inline-block;
 	padding: 15px 30px;
-	color: #1b998b;
+	color: #c6e0ff;
+	background: #1b998b;
+	box-shadow: 0 0 10px #c6e0ff, 0 0 40px, #c6e0ff, 0 0 80px #c6e0ff;
+	border: none;
+	border-radius: 30px;
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	text-decoration: none;
 	font-size: 24px;
 	overflow: hidden;
-	transition: 0.2s;
-}
-
-.button:hover{
-	color: #c6e0ff;
-	background: #1b998b;
-	box-shadow: 0 0 10px #c6e0ff, 0 0 40px, #c6e0ff, 0 0 80px #c6e0ff;
-	transition-delay: 1.3s;
-}
-
-.button span{
-	position: absolute;
-	display: block;
-}
-
-.button span:nth-child(1){
-	top:0;
-	left: -100%;
-	width: 100%;
-	height: 2px;
-	background: linear-gradient(90deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(1){
-	left: 100%;
-	transition: 1s;
-}
-
-.button span:nth-child(3){
-	bottom:0;
-	right: -100%;
-	width: 100%;
-	height: 2px;
-	background: linear-gradient(270deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(3){
-	right: 100%;
-	transition: 1s;
-	transition-delay: 0.5s;
-}
-
-.button span:nth-child(2){
-	top: -100%;
-	right: 0;
-	width: 2px;
-	height: 100%;
-	background: linear-gradient(180deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(2){
-	top: 100%;
-	transition: 1s;
-	transition-delay: 0.25s;
-}
-
-.button span:nth-child(4){
-	bottom: -100%;
-	left: 0;
-	width: 2px;
-	height: 100%;
-	background: linear-gradient(360deg, transparent, #1b998b);
-}
-
-.button:hover span:nth-child(4){
-	bottom: 100%;
-	transition: 1s;
-	transition-delay: 0.75s;
 }
 
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -3108,7 +2978,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -3124,13 +2994,13 @@ footer{
 	text-align: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 }
 
@@ -3140,14 +3010,13 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	margin:0;
 	display: flex;
-	/*background-color: #EBEBEB;*/
-	background-color: yellow;
+	background-color: #EBEBEB;
 	align-items: center;
 	justify-content: center;
 }
@@ -3342,7 +3211,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -3481,7 +3350,7 @@ footer{
 
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -3707,7 +3576,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -3725,13 +3594,13 @@ footer{
 	align-content: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 }
 
@@ -3749,7 +3618,7 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -3952,7 +3821,7 @@ footer{
 
 /*------------------------------------HOME------------------------------------*/
 
-#wrap1{
+#Home{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -4091,7 +3960,7 @@ footer{
 
 /*------------------------------------FARM YOUR FRIENDS------------------------------------*/
 
-#wrap2{
+#FarmYourFriends{
 	width: 100%;
 	margin:0;
 	display: block;
@@ -4317,7 +4186,7 @@ footer{
 }
 /*------------------------------------ABOUT US------------------------------------*/
 
-#wrap3{
+#AboutUs{
 	width: 100%;
 	height:100vh;
 	margin:0;
@@ -4335,13 +4204,13 @@ footer{
 	align-content: center;
 }
 
-#wrap3 h1{
+#AboutUs h1{
 	font-weight: 100;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 }
 
-#wrap3 p{
+#AboutUs p{
 	letter-spacing:2px;
 	font-size:25px;
 }
@@ -4360,7 +4229,7 @@ footer{
 
 /*------------------------------------CONTACT------------------------------------*/
 
-#wrap4{
+#Contact{
 	width: 100%;
 	height:100vh;
 	margin:0;
