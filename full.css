@@ -80,6 +80,19 @@ body, html{
 	}
 }
 
+.language img{
+	margin-right:5px;
+}
+
+.language a{
+	color: #EBEBEB;
+	text-decoration: none;
+}
+
+.language a:hover{
+	color: #1b998b;
+}
+
 /*Para telas muito pequenas*/
 @media screen and (max-width: 419px) and (orientation:portrait){
 /*------------------------------------LOGO------------------------------------*/
@@ -3656,7 +3669,7 @@ footer{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100%;
+	width: 500px;
 	margin-top: 10px;
 	padding: 10px;
 	resize: none;
