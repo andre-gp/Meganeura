@@ -4784,9 +4784,14 @@ header{
 	padding-bottom: 100px;
 }
 
+.steamlogo i:hover{
+	transform: scale(1.2,1.2);
+}
+
 .steamlogo i{
 	font-size: 100px;
 	color: #1b2838;
+	transition: 0.5s;
 }
 
 .gallery-container{
@@ -4969,7 +4974,7 @@ header{
 
 #Games{
 	width: 100%;
-	margin-bottom: -100px;
+	margin-bottom: -110px;
 	color: #F4F5F5;
 	font-family: 'Sarabun', sans-serif;
 }
@@ -5091,7 +5096,7 @@ header{
 /*------------------------------------ABOUT US------------------------------------*/
 #AboutUs{
 	width: 100%;
-	margin-bottom: -100px;
+	margin-bottom: -110px;
 	font-family: 'Sarabun', sans-serif;
 	font-weight: 300;
 	line-height: 1.6;
