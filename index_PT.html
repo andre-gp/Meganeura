@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset='UTF-8'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meganeura Games</title>
+
+<link rel='shortcut icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
+<link rel='icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/436fe33937.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="full.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+	
+<div id="wrapper">
+	
+	<header>
+<!-- logo do site-->
+
+<div id="logo">
+<img id="megalogo" src="Images/Icon_Rectangle_Alpha.png"/>
+<div class="tituloCont">
+<img id="Tmeganeura" src="Images/Text_Meganeura_black.png"/>
+<img id="Tgames" src="Images/Text_Games.png"/>
+</div>
+<a class="menu-icon" onClick="toggleMenu()"><i class="fas fa-bars"></i></a>
+
+</div>
+
+		
+		<div class="menu" id="menu">
+		<a  href="#Home">Início</a>
+		<a  href="#Games">Jogos</a>
+		<a  href="#AboutUs">Sobre Nós</a>
+		<a  href="#Contact">Contato</a>
+		</div>
+		
+		<a class="idi-icon" onClick="toggleIdi()"><i id="arrow" class="fa-solid fa-caret-down"></i><i class="fa-solid fa-globe"></i></a>
+		
+	</header>
+	
+			<div class="mobile-menu-container loadmenu" id="mobile-menu-container">
+				
+					<a onClick="toggleMenu()" href="#Home">Início</a>
+					<a onClick="toggleMenu()" href="#Games">Jogos</a>
+					<a onClick="toggleMenu()" href="#AboutUs">Sobre Nós</a>
+					<a onClick="toggleMenu()" href="#Contact">Contato</a>
+					<a onClick="toggleIdiMenu()">Idioma<i id="arrow" class="fa-solid fa-caret-down"></i></a>	
+			</div>
+						<div class="mobile-idioma loadmenu" id="mobile-idioma">
+						<a onClick="toggleIdiMenu()" href="index.html"><img style="width:15px;" src="Images/en.png">English</a>
+						<a onClick="toggleIdiMenu()" href="index_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
+						</div>
+			
+		
+	
+		<div class="idioma" id="idioma">
+		<a onClick="toggleIdi()" href="index.html"><img style="width:15px;" src="Images/en.png">English</a>
+		<a onClick="toggleIdi()" href="index_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
+		</div>
+	
+				<div class="bloco" id="Home"></div>
+				<div class="Home">
+					<div class="main">
+				
+					<video id="bg-video" autoplay muted loop poster="Images/Prints/print2.jpg">
+					<source src="Images/Site_BackgroundVideo.mp4" type="video/mp4">
+					</video>
+					
+					<div class="maininfo">
+					<div class="content">
+					<h1>Bem-Vindo!</h1>
+					<p>Nós somos a MEGANEURA GAMES, um grupo de desenvolvedores Indie de Belo Horizonte, Brazil.</p>
+					<p>Atualmente, estamos trabalhando no Farm Your Friends, que logo estará disponível na Steam!</p>
+					<p>Você pode adicioná-lo à sua lista de desejos da Steam.</p>
+					<a class="button" href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					Clique aqui
+					</a>
+					</div>
+					</div>
+					
+					</div>
+				</div>
+				
+				
+				<div id="Games">
+				
+				<div class="bgborder">
+				<div class="backg">
+				<div class="mask">
+				<div class="overlay">
+				
+				<div class="gamescont">
+				<h1>Nossos Jogos</h1>
+				
+				<div class="gcontainer">
+				<div class="gamecard" id="gd" onmouseover="mouseOver()" onmouseout="mouseOut()">
+				<a href="FarmYourFriends.html"><img src="Images/LibraryCapsule_1.6.png"/></a>
+				<a class="gamename" id="gn" href="FarmYourFriends.html">Farm Your Friends</a>
+				</div>
+				</div>
+				
+				
+				<div class="mobile-gcontainer">
+				<div class="mobile-gamecard" id="gd">
+				<a href="FarmYourFriends.html"><img src="Images/LibraryCapsule_1.6.png"/></a>
+				<a class="mobile-gamename" id="gn" href="FarmYourFriends.html">Farm Your Friends</a>
+				</div>
+				</div>
+				
+				
+				</div>
+				
+				</div>
+				</div>
+				</div>
+				</div>
+				
+				
+				</div>
+				
+				
+				<div id="AboutUs">
+				
+				<div class="AboutBord">
+				<div class="Aboutbg">
+				<div class="AboutSh">
+				
+					<div class="AboutCont">
+					<div class="div1">
+					<h1>Sobre Nós</h1>
+					<p>Nós somos cinco desenvolvedores de jogos independentes com o sonho de fazer jogos incríveis. Nos conhecemos na faculdade de Design de Jogos em Belo Horizonte e desde então nós estamos trabalhando juntos como um estúdio indie chamado Meganeura Games. Nosso primeiro jogo é Farm Your Friends, um jogo de fazenda competitivo em ritmo acelerado para 8 jogadores.</p>
+					</div>
+					
+					<div class="div2">
+					
+					<h1>O time:</h1>
+					<div class="members">
+					<div><img src="Images/bigcat.png"><h4>ANDRÉ GONÇALVES PACHECO</h4><p>Grente de Projetos</br>Programador</br>Designer de Som</p></div>
+					<div class="down"><img src="Images/ygo.png"><h4>HYGOR AUGUSTO REIS ANDRADE</h4><p>Artista 2D</br>Artista 3D</br>Artista de Interface</p></div>
+					<div><img src="Images/lulu.png"><h4>LUISA MIRANDA DOS SANTOS PACHECO</h4><p>Animadora</br>Rigger</p></div>
+					<div class="down"><img src="Images/mari.png"><h4>MARIANA SOARES MATEUS</h4><p>Artista 3D</br>Designer de Cenário</p></div>
+					<div><img src="Images/dus.png"><h4>SARAH RAMOS DE ARAÚJO</h4><p>Artista 2D</br>Artista 3D</br>Artista de Efeitos Visuais</br>Compositora</p></div>
+					</div>
+				
+					</div>
+					</div>
+				
+				</div>
+				</div>
+				</div>
+				</div>
+				
+				
+				<div id="Contact">
+				
+				
+				<div class="ContactBord">
+				<div class="Contactbg">
+				<div class="ContactImg">
+				<div class="ContactOverlay">
+				<div class="form">
+				<div id="contact">
+				<h1>Fale Conosco</h1>
+				<form class="contact-form" action="https://formspree.io/xzbayewp" method="POST">
+					<input type="text" name="name" placeholder="Seu Nome">
+					<input type="text" name="mail" placeholder="Seu E-mail">
+					<input type="text" name="subject" placeholder="Assunto">
+					<textarea name="message" placeholder="Sua Mensagem"></textarea>
+					<button type="submit" name="submit">Enviar</button>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				
+				</div>
+				
+				
+				
+				
+	</div>
+	
+<script type="text/javascript">
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("slide-img");
+  var dots = document.getElementsByClassName("demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+if (window.innerWidth <= 600){
+var vid = document.getElementById("bg-video");
+vid.autoplay = false;
+vid.preload = "none";
+vid.style.display = "none";
+}
+/*
+function toggleMenu(){
+var menuBox = document.getElementById('mobile-menu-container');
+var modalPage = document.getElementById("myModal");
+if (window.innerWidth <= 600){
+	if (menuBox.style.display == "flex"){
+		menuBox.style.display = "none";
+	}
+	else{
+	menuBox.style.display = "flex";
+		if(modalPage.style.display == "block"){modalPage.style.display = "none"}
+	}
+}
+}*/
+
+function toggleMenu(){
+const menuBox = document.getElementById('mobile-menu-container');
+const IdiomaBox = document.getElementById('mobile-idioma');
+
+menuBox.classList.remove("loadmenu");
+menuBox.classList.add("bigger");
+window.toggleMenu = () => {
+	
+  if (menuBox.classList.contains("smaller")) {
+    menuBox.classList.remove("smaller");
+    menuBox.classList.add("bigger");
+  } 
+  else {
+			if(IdiomaBox.classList.contains("bigger")){
+			IdiomaBox.classList.remove("bigger");
+			IdiomaBox.classList.add("smaller");
+			} 
+  
+    menuBox.classList.remove("bigger");
+    menuBox.classList.add("smaller");
+	
+  }
+}
+}
+
+
+function toggleIdiMenu(){
+const IdimenuBox = document.getElementById('mobile-idioma');
+
+IdimenuBox.classList.remove("loadmenu");
+IdimenuBox.classList.add("bigger");
+
+window.toggleIdiMenu = () => {
+	
+  if (IdimenuBox.classList.contains("smaller")){
+    IdimenuBox.classList.remove("smaller");
+    IdimenuBox.classList.add("bigger");
+	
+  } else { 
+    IdimenuBox.classList.remove("bigger");
+    IdimenuBox.classList.add("smaller");
+  }
+}
+}
+
+
+function toggleIdi(){
+const IdiBox = document.getElementById('idioma');
+const seta = document.getElementById('arrow');
+window.isSmall = false;
+IdiBox.style.display = "flex";
+seta.classList.add("fa-caret-up");
+
+window.toggleIdi = () => {
+  if (isSmall) {
+    IdiBox.classList.remove("smaller");
+    IdiBox.classList.add("bigger");
+	seta.classList.remove("fa-caret-down");
+	seta.classList.add("fa-caret-up");
+	
+  } else {
+    IdiBox.classList.remove("bigger");
+    IdiBox.classList.add("smaller");
+	seta.classList.remove("fa-caret-up");
+	seta.classList.add("fa-caret-down");
+	
+  }
+  isSmall = !isSmall;
+}
+
+}
+
+
+function mouseOver() {
+  document.getElementById("gd").style.padding = "10px 0 70px 0";
+  document.getElementById("gn").style.transform = "translateY(-1rem)";
+  document.getElementById("gn").style.opacity = "1";
+  document.getElementById("gn").style.transitionTimingFunction = "ease-out";
+}
+function mouseOut() {
+  document.getElementById("gd").style.padding = "10px 0 10px 0";
+  document.getElementById("gn").style.transform = "translateY(-2rem)";
+  document.getElementById("gn").style.opacity = "0";
+  document.getElementById("gn").style.transitionTimingFunction = "ease";
+}
+
+
+
+
+$(document).ready(function() {
+    // Checa ao iniciar a página
+    checkSize();
+
+    // Testa ao mudar o tamanho da tela
+    $(window).resize(checkSize);
+});
+
+//Function to the css rule
+function checkSize(){
+var menu = document.getElementById('menu');
+    if ($(".menu").css("display") == "none" && window.innerWidth > 600){
+        menu.style.display = "flex";
+		location.reload();
+    }
+	
+	if ($(".menu").css("display") == "flex" && window.innerWidth <= 600){
+        menu.style.display = "none";
+		location.reload();
+    }
+}
+
+//MODAL GALLERY
+
+function openModal(){
+	var menu = document.getElementById('menu');
+	var logomenu = document.getElementById('logo');
+	document.getElementById("myModal").style.display = "block";
+	
+	if (document.getElementById("myModal").style.display == "block" && window.innerWidth <= 600){
+		logomenu.style.display = "none";
+		document.getElementById("myModal").style.marginTop = "0";
+		
+		if(menu.style.display == "flex"){
+		menu.style.display = "none";
+		}
+	}
+}
+
+function closeModal(){
+	var logomenu = document.getElementById('logo');
+	document.getElementById("myModal").style.display = "none";
+	
+	if (document.getElementById("myModal").style.display == "none" && window.innerWidth <= 600){
+		logomenu.style.display = "flex";
+	}
+}
+
+var modalIndex = 1;
+modalSlides(modalIndex);
+
+// Next/previous controls
+function plusModal(n) {
+  modalSlides(modalIndex += n);
+}
+
+// Thumbnail image controls
+function currentModal(n) {
+  modalSlides(modalIndex = n);
+}
+
+function modalSlides(n){
+var i;
+var modalS = document.getElementsByClassName("modal-slide-img");
+
+if (n > modalS.length){modalIndex = 1}
+if (n < 1) {modalIndex = modalS.length}
+for (i = 0; i < modalS.length; i++){
+	modalS[i].style.display = "none";
+}
+modalS[modalIndex-1].style.display = "block";
+}
+
+</script>
+</body>
+
+
+<footer>
+	<div id="info">
+	<p>Meganeura Games</p>
+	<p>Belo Horizonte - Brasil</p>
+	</div>
+	<div id="social">
+	<p>Nossas Redes Sociais</p>
+	<div class="icon">
+	<a href="https://www.instagram.com/meganeuragames/" target="_blank"><i class="fab fa-instagram"></i></a>
+	<a href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank"><i class="fab fa-steam-symbol"></i>
+	<a href="https://twitter.com/FarmYourFriends" target="_blank"><i class="fab fa-twitter"></i></a>
+	</div>
+	</div>
+</footer>
+
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset='UTF-8'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meganeura Games</title>
+
+<link rel='shortcut icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
+<link rel='icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/436fe33937.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="full.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+	
+<div id="wrapper">
+	
+	<header id="head">
+<!-- logo do site-->
+
+<div id="logo">
+<img id="megalogo" src="Images/Icon_Rectangle_Alpha.png"/>
+<div class="tituloCont">
+<img id="Tmeganeura" src="Images/Text_Meganeura_black.png"/>
+<img id="Tgames" src="Images/Text_Games.png"/>
+</div>
+<a class="menu-icon" onClick="toggleMenu()"><i class="fas fa-bars"></i></a>
+
+</div>
+
+		
+		<div class="menu" id="menu">
+		<a  href="index_PT.html#Home">Início</a>
+		<a  href="index_PT.html#Games">Jogos</a>
+		<a  href="index_PT.html#AboutUs">Sobre Nós</a>
+		<a  href="index_PT.html#Contact">Contato</a>
+		</div>
+		
+		<a class="idi-icon" onClick="toggleIdi()"><i id="arrow" class="fa-solid fa-caret-down"></i><i class="fa-solid fa-globe"></i></a>
+		
+	</header>
+	
+			<div class="mobile-menu-container loadmenu" id="mobile-menu-container">
+				
+					<a onClick="toggleMenu()" href="index_PT.html#Home">Início</a>
+					<a onClick="toggleMenu()" href="index_PT.html#Games">Jogos</a>
+					<a onClick="toggleMenu()" href="index_PT.html#AboutUs">Sobre Nós</a>
+					<a onClick="toggleMenu()" href="index_PT.html#Contact">Contato</a>
+					<a onClick="toggleIdiMenu()">Idioma<i id="arrow" class="fa-solid fa-caret-down"></i></a>	
+			</div>
+						<div class="mobile-idioma loadmenu" id="mobile-idioma">
+						<a onClick="toggleIdiMenu()" href="FarmYourFriends.html"><img style="width:15px;" src="Images/en.png">English</a>
+						<a onClick="toggleIdiMenu()" href="FarmYourFriends_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
+						</div>
+			
+		
+	
+		<div class="idioma" id="idioma">
+		<a onClick="toggleIdi()" href="FarmYourFriends.html"><img style="width:15px;" src="Images/en.png">English</a>
+		<a onClick="toggleIdi()" href="FarmYourFriends_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
+		</div>
+	
+		
+		<div class="bloco"></div>
+		
+		<div class="logoFyf">
+				<div class= "logoOver">
+				<section>
+				<img src="Images/logo1.7_bordapreta.png">
+				<p>Um jogo de fazenda frenético para até 8 jogadores online! Para se tornar o melhor fazendeiro você deve sabotar e roubar enquanto defende suas plantações e animais! Jogue em times ou sozinho!.</p>
+				<div class="linksteam"><a href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank">Clique aqui para adicionar à sua Lista de Desejos!</a></div>
+				</section>
+				</div>
+		</div>
+		
+		
+		
+	<div class="Fyf">
+	
+				<div class="AboutBord">
+				<div class="Aboutbg">
+				<div class="AboutSh">
+		<div class="FyfCont">
+		<div id="AbtGm"><h1>Sobre o jogo</h1></div>
+		
+		<div class="Cont1">
+			
+				<div class="rightDiv">
+				<img src="Images/GIFs Loja/FastPaced600_3.gif">
+				<p class="righttext">Are, regue, colha e venda. Colete recursos dos animais!</p>
+				</div>
+				
+				<div class="invertDiv">
+				<p>Use itens ofensivos, defensivos e de utilidade!</p>
+				<img src="Images/GIFs Loja/Gif_Items600.gif">
+				</div>
+				
+				<div class="rightDiv">
+				<img src="Images/GIFs Loja/Gif_RandomEvents.gif">
+				<p class="righttext">Eventos aleatórios que mudam inesperadamente o ritmo da partida!</p>
+				</div>
+				
+				<div class="invertDiv">
+				<p>Jogue com diferentes personagens que combinam com sua personalidade!</p>
+				<img src="Images/GIFs Loja/ChangingCharacters600_2.gif">
+				</div>
+				
+				<h4>Aquele que vender mais dentro do prazo se tornará o melhor agricultor!</h4>
+				
+				
+				<div class="TimeCont">
+				<p>A partida dura 5 minutos, tornando-se uma experiência frenética e caótica. Tente vender o máximo que puder para ser o vencedor enquanto enfrenta outros jogadores.</p>
+				<img src="Images/rooster_1.png">
+				<p class="righttext"> Você precisa encontrar o equilíbrio entre cuidar da sua fazenda e sabotar a dos outros - mas não terá tempo para pensar nisso.</p>
+				</div>
+		</div>
+
+		
+		<div class="Cont2">
+		
+				<div class="ContOnline">
+					<div class="OnlineBg">
+					<div class="OnlineOver">
+						<h1>Jogue online!</h1>
+						<img src="Images/SpritesGameMode_1.png">
+					</div>
+					</div>
+				</div>
+				<p>Junte-se à sala dos seus amigos ou até mesmo de um estranho. Ganhe moedas jogando e completando desafios diários para poder comprar novos personagens e skins.</p>
+				
+		
+					<div class="gallery-container">
+						<div class="slide-img fade">
+						<a class="teste" onClick="openModal(); currentModal(1)"><i class="fas fa-expand"></i></a>
+						<img src="Images/Prints/print1.jpg"/>
+						</div>
+						
+						<div class="slide-img fade">
+						<a class="teste" onClick="openModal(); currentModal(2)"><i class="fas fa-expand"></i></a>
+						<img src="Images/Prints/print2.jpg"/>
+						</div>
+						
+						<div class="slide-img fade">
+						<a class="teste" onClick="openModal(); currentModal(3)"><i class="fas fa-expand"></i></a>
+						<img src="Images/Prints/print3.jpg"/>
+						</div>
+						
+						<div class="slide-img fade">
+						<a class="teste" onClick="openModal(); currentModal(4)"><i class="fas fa-expand"></i></a>
+						<img src="Images/Prints/print4.jpg"/>
+						</div>
+						
+						<div class="slide-img fade">
+						<a class="teste" onClick="openModal(); currentModal(5)"><i class="fas fa-expand"></i></a>
+						<img src="Images/Prints/print5.jpg"/>
+						</div>
+						
+						<div class="slide-img fade">
+						<div class="videowrapper">
+						<iframe width="100%" src="https://www.youtube.com/embed/hh6ybyVcKiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+						</div>
+						
+						<a class="prev" onclick="plusSlides(-1)"><</a>
+						<a class="next" onclick="plusSlides(1)">></a>
+						
+							<div class="preview">
+								<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/print1.jpg" onClick="currentSlide(1)"/>
+								</div>
+								
+								<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/print2.jpg" onClick="currentSlide(2)"/>
+								</div>
+								
+								<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/print3.jpg" onClick="currentSlide(3)"/>
+								</div>
+								
+								<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/print4.jpg" onClick="currentSlide(4)"/>
+								</div>
+								
+									<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/print5.jpg" onClick="currentSlide(5)"/>
+								</div>
+								
+								<div class="preview-img">
+								<img class="demo cursor" src="Images/Prints/Video_Thumbnail.png" onClick="currentSlide(6)"/>
+								</div>
+							</div>
+				</div>
+				
+						
+				<p>Quer desafiar seus amigos para ver quem pode ser o melhor fazendeiro?</br>Adicione à lista de desejos agora na Steam!</p>
+				<a class="steamlogo" href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank"><i class="fa-brands fa-steam"></i></a>
+		
+		</div>	
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	<!-- MODAL GALLERY-->
+					<div id="myModal" class="modal">
+					<span class="close cursor" onClick="closeModal()">&times;</span>
+						<div class="modal-content">
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print1.jpg"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print2.jpg"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print3.jpg"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print4.jpg"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<img src="Images/Prints/print5.jpg"/>
+								</div>
+								
+								<div class="modal-slide-img fade">
+								<div class="videowrapper">
+								<iframe width="100%" src="https://www.youtube.com/embed/hh6ybyVcKiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+								</div>
+								
+								<a class="modalprev" onclick="plusModal(-1)"><</a>
+								<a class="modalnext" onclick="plusModal(1)">></a>
+						</div>
+						</div>
+	
+	
+</div>		
+	
+<script type="text/javascript">
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("slide-img");
+  var dots = document.getElementsByClassName("demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+if (window.innerWidth <= 600){
+var vid = document.getElementById("bg-video");
+vid.autoplay = false;
+vid.preload = "none";
+vid.style.display = "none";
+}
+
+function toggleMenu(){
+const menuBox = document.getElementById('mobile-menu-container');
+const IdiomaBox = document.getElementById('mobile-idioma');
+
+menuBox.classList.remove("loadmenu");
+menuBox.classList.add("bigger");
+window.toggleMenu = () => {
+	
+  if (menuBox.classList.contains("smaller")) {
+    menuBox.classList.remove("smaller");
+    menuBox.classList.add("bigger");
+  } 
+  else {
+			if(IdiomaBox.classList.contains("bigger")){
+			IdiomaBox.classList.remove("bigger");
+			IdiomaBox.classList.add("smaller");
+			} 
+  
+    menuBox.classList.remove("bigger");
+    menuBox.classList.add("smaller");
+	
+  }
+}
+}
+
+
+function toggleIdiMenu(){
+const IdimenuBox = document.getElementById('mobile-idioma');
+
+IdimenuBox.classList.remove("loadmenu");
+IdimenuBox.classList.add("bigger");
+
+window.toggleIdiMenu = () => {
+	
+  if (IdimenuBox.classList.contains("smaller")){
+    IdimenuBox.classList.remove("smaller");
+    IdimenuBox.classList.add("bigger");
+	
+  } else { 
+    IdimenuBox.classList.remove("bigger");
+    IdimenuBox.classList.add("smaller");
+  }
+}
+}
+
+
+function toggleIdi(){
+const IdiBox = document.getElementById('idioma');
+const seta = document.getElementById('arrow');
+window.isSmall = false;
+IdiBox.style.display = "flex";
+seta.classList.add("fa-caret-up");
+
+window.toggleIdi = () => {
+  if (isSmall) {
+    IdiBox.classList.remove("smaller");
+    IdiBox.classList.add("bigger");
+	seta.classList.remove("fa-caret-down");
+	seta.classList.add("fa-caret-up");
+	
+  } else {
+    IdiBox.classList.remove("bigger");
+    IdiBox.classList.add("smaller");
+	seta.classList.remove("fa-caret-up");
+	seta.classList.add("fa-caret-down");
+	
+  }
+  isSmall = !isSmall;
+}
+
+}
+
+
+function mouseOver() {
+  document.getElementById("gd").style.padding = "10px 0 70px 0";
+  document.getElementById("gn").style.transform = "translateY(-1rem)";
+  document.getElementById("gn").style.opacity = "1";
+  document.getElementById("gn").style.transitionTimingFunction = "ease-out";
+}
+function mouseOut() {
+  document.getElementById("gd").style.padding = "10px 0 10px 0";
+  document.getElementById("gn").style.transform = "translateY(-2rem)";
+  document.getElementById("gn").style.opacity = "0";
+  document.getElementById("gn").style.transitionTimingFunction = "ease";
+}
+
+
+
+
+$(document).ready(function() {
+    // Checa ao iniciar a página
+    checkSize();
+
+    // Testa ao mudar o tamanho da tela
+    $(window).resize(checkSize);
+});
+
+//Function to the css rule
+function checkSize(){
+var menu = document.getElementById('menu');
+    if ($(".menu").css("display") == "none" && window.innerWidth > 600){
+        menu.style.display = "flex";
+		location.reload();
+    }
+	
+	if ($(".menu").css("display") == "flex" && window.innerWidth <= 600){
+        menu.style.display = "none";
+		location.reload();
+    }
+}
+
+//MODAL GALLERY
+
+function openModal(){
+	document.getElementById("myModal").style.display = "flex";
+	document.getElementById("head").style.display = "none";
+}
+
+function closeModal(){
+	document.getElementById("myModal").style.display = "none";
+	document.getElementById("head").style.display = "flex";
+}
+
+var modalIndex = 1;
+modalSlides(modalIndex);
+
+// Next/previous controls
+function plusModal(n) {
+  modalSlides(modalIndex += n);
+}
+
+// Thumbnail image controls
+function currentModal(n) {
+  modalSlides(modalIndex = n);
+}
+
+function modalSlides(n){
+var i;
+var modalS = document.getElementsByClassName("modal-slide-img");
+
+if (n > modalS.length){modalIndex = 1}
+if (n < 1) {modalIndex = modalS.length}
+for (i = 0; i < modalS.length; i++){
+	modalS[i].style.display = "none";
+}
+modalS[modalIndex-1].style.display = "block";
+}
+
+</script>
+</body>
+
+
+<footer>
+	<div id="info">
+	<p>Meganeura Games</p>
+	<p>Belo Horizonte - Brasil</p>
+	</div>
+	<div id="social">
+	<p>Nossas Redes Sociais</p>
+	<div class="icon">
+	<a href="https://www.instagram.com/meganeuragames/" target="_blank"><i class="fab fa-instagram"></i></a>
+	<a href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank"><i class="fab fa-steam-symbol"></i>
+	<a href="https://twitter.com/FarmYourFriends" target="_blank"><i class="fab fa-twitter"></i></a>
+	</div>
+	</div>
+</footer>
+
+</html>
