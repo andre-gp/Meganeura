@@ -4962,7 +4962,7 @@ header{
 
 #Games{
 	width: 100%;
-	margin-bottom: -50px;
+	margin-bottom: -80px;
 	color: #F4F5F5;
 	font-family: 'Sarabun', sans-serif;
 }
@@ -5084,7 +5084,7 @@ header{
 /*------------------------------------ABOUT US------------------------------------*/
 #AboutUs{
 	width: 100%;
-	margin-bottom: -50px;
+	margin-bottom: -80px;
 	font-family: 'Sarabun', sans-serif;
 	font-weight: 300;
 	line-height: 1.6;
