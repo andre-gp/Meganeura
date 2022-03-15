@@ -457,6 +457,7 @@ header{
 
 .Cont1 p{
 	width: 100%;
+	text-align: center;
 }
 
 .righttext{
@@ -1473,6 +1474,7 @@ header{
 
 .Cont1 p{
 	width: 100%;
+	text-align: center;
 }
 
 .righttext{
@@ -2505,6 +2507,7 @@ header{
 
 .Cont1 p{
 	width: 100%;
+	text-align: center;
 }
 
 .righttext{
@@ -3598,10 +3601,12 @@ header{
 
 .Cont1 p{
 	width: 50%;
+	padding-left: 20px;
 }
 
 .righttext{
 	text-align: right;
+	padding-right: 20px; 
 }
 
 .Cont1 h4{
@@ -4689,10 +4694,12 @@ header{
 
 .Cont1 p{
 	width: 50%;
+	padding-left: 20px;
 }
 
 .righttext{
 	text-align: right;
+	padding-right: 20px; 
 }
 
 .Cont1 h4{
@@ -4962,7 +4969,7 @@ header{
 
 #Games{
 	width: 100%;
-	margin-bottom: -80px;
+	margin-bottom: -100px;
 	color: #F4F5F5;
 	font-family: 'Sarabun', sans-serif;
 }
@@ -5084,7 +5091,7 @@ header{
 /*------------------------------------ABOUT US------------------------------------*/
 #AboutUs{
 	width: 100%;
-	margin-bottom: -80px;
+	margin-bottom: -100px;
 	font-family: 'Sarabun', sans-serif;
 	font-weight: 300;
 	line-height: 1.6;
