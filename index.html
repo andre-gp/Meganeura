@@ -1,431 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meganeura Games — Full-cycle game development studio</title>
+<link rel="icon" href="Images/Icon_Rectangle_Alpha.png" type="image/png" />
+<meta name="description" content="Meganeura is a full-cycle game development studio. Art, code, animation and audio under one roof — from concept to launch." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #17130d;
+    --paper: #f6f3ec;
+    --orange: #f49744;
+    --mut: rgba(23, 19, 13, 0.56);
+    --line: rgba(23, 19, 13, 0.12);
+    --disp: "Space Grotesk", sans-serif;
+    --body: "Hanken Grotesk", sans-serif;
+    --mono: "Space Mono", ui-monospace, monospace;
+    --pad: 24px;
+    --maxw: 1160px;
+  }
+  @media (min-width: 720px) { :root { --pad: 40px; } }
+  @media (min-width: 1024px) { :root { --pad: 64px; } }
 
-<meta charset='UTF-8'/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meganeura Games</title>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+  h1, h2, h3 { margin: 0; }
+  p { margin: 0; }
+  button { font: inherit; cursor: pointer; }
 
-<link rel='shortcut icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
-<link rel='icon' href='Images/Icon_Rectangle_Alpha.png' type='image/x-icon'>
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--orange);
+  }
+  .mark-ring {
+    display: inline-block; width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid var(--orange); box-sizing: border-box; flex: none;
+  }
+  .mark-ring.sm { width: 9px; height: 9px; border-width: 2px; }
+  .mark-ring.ink { border-color: var(--ink); }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/436fe33937.js" crossorigin="anonymous"></script>
+  /* Placeholder image slots */
+  .ph {
+    position: relative; width: 100%; display: flex; align-items: center;
+    justify-content: center; overflow: hidden;
+    background-color: rgba(23, 19, 13, 0.045);
+    background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(23, 19, 13, 0.10) 11px 12px);
+  }
+  .ph span {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+    text-transform: uppercase; color: rgba(23, 19, 13, 0.42);
+    background: rgba(246, 243, 236, 0.9); padding: 5px 10px; border-radius: 2px;
+    text-align: center; line-height: 1.4; max-width: 80%;
+  }
+  .ph.orange {
+    background-color: rgba(244, 151, 68, 0.10);
+    background-image: repeating-linear-gradient(135deg, transparent 0 11px, rgba(244, 151, 68, 0.34) 11px 12px);
+  }
 
-<link rel="stylesheet" type="text/css" href="full.css">
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--disp); font-weight: 600; font-size: 16px;
+    padding: 16px 30px; border-radius: 2px; border: 1px solid transparent;
+    transition: background .15s, border-color .15s, color .15s, transform .15s;
+  }
+  .btn-primary { color: var(--paper); background: var(--orange); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { color: var(--ink); border-color: var(--line); background: transparent; }
+  .btn-ghost:hover { background: rgba(23, 19, 13, 0.04); }
+  .btn-ink { color: var(--paper); background: var(--ink); }
+  .btn-ink:hover { transform: translateY(-1px); }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 20; background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; height: 72px; }
+  @media (min-width: 1024px) { .nav-inner { height: 84px; } }
+  .brand {
+    display: flex; align-items: center; gap: 12px; font-family: var(--disp);
+    font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: var(--ink);
+  }
+  .brand .diamond { width: 14px; height: 14px; background: var(--orange); transform: rotate(45deg); flex: none; }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 38px; }
+  .nav-links a.lnk { font-size: 15px; color: var(--mut); transition: color .15s; }
+  .nav-links a.lnk:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--disp); font-weight: 600; font-size: 14.5px; color: var(--paper);
+    background: var(--ink); padding: 12px 20px; border-radius: 2px; letter-spacing: -0.01em;
+  }
+  .nav-toggle {
+    margin-left: auto; display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; padding: 8px;
+  }
+  .nav-toggle span { width: 22px; height: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  @media (max-width: 859px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: absolute; top: 72px; left: 0; right: 0; margin: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      max-height: 0; overflow: hidden; transition: max-height .28s ease;
+    }
+    .nav-links.open { max-height: 360px; }
+    .nav-links a.lnk { padding: 18px var(--pad); border-top: 1px solid var(--line); }
+    .nav-links .nav-cta { margin: 16px var(--pad) 22px; text-align: center; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 64px; padding-bottom: 64px; }
+  @media (min-width: 1024px) { .hero { padding-top: 96px; padding-bottom: 88px; } }
+  .hero h1 {
+    font-family: var(--disp); font-weight: 600; font-size: clamp(40px, 7.2vw, 72px);
+    line-height: 1.02; letter-spacing: -0.03em; max-width: 940px; text-wrap: balance;
+    margin-top: 30px;
+  }
+  .hero .lede {
+    font-size: clamp(17px, 2.4vw, 21px); line-height: 1.55; color: var(--mut);
+    max-width: 620px; margin-top: 34px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 42px; }
+  .hero .ph { height: clamp(220px, 38vw, 420px); margin-top: 56px; }
+  @media (min-width: 1024px) { .hero .ph { margin-top: 64px; } }
+
+  /* ---------- Trust strip ---------- */
+  .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .trust-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 40px; padding-top: 26px; padding-bottom: 26px; }
+  .trust .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mut); }
+  .trust .items { display: flex; flex-wrap: wrap; gap: 18px 40px; margin-left: auto; }
+  .trust .items span { display: flex; align-items: center; gap: 10px; font-size: 15.5px; }
+
+  /* ---------- Section heads ---------- */
+  .sec { padding-top: 72px; padding-bottom: 72px; }
+  @media (min-width: 1024px) { .sec { padding-top: 96px; padding-bottom: 96px; } }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 48px; }
+  @media (min-width: 1024px) { .sec-head { margin-bottom: 56px; } }
+  .sec-head h2 {
+    font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.2vw, 42px);
+    letter-spacing: -0.025em; max-width: 560px; line-height: 1.05;
+  }
+  .sec-head p { font-size: 16px; color: var(--mut); max-width: 300px; }
+  @media (min-width: 720px) { .sec-head p { text-align: right; } }
+
+  /* ---------- Services grid ---------- */
+  .grid-svc { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  @media (min-width: 560px) { .grid-svc { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid-svc { grid-template-columns: repeat(4, 1fr); } }
+  .svc { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 26px 34px; min-height: 188px; transition: background .2s; }
+  .svc:hover { background: rgba(244, 151, 68, 0.06); }
+  .svc h3 { font-family: var(--disp); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; margin: 22px 0 10px; line-height: 1.15; }
+  .svc p { font-size: 14.5px; line-height: 1.5; color: var(--mut); }
+
+  /* ---------- Process (dark) ---------- */
+  .process { background: var(--ink); }
+  .process h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.2vw, 42px); letter-spacing: -0.025em; color: var(--paper); line-height: 1.05; margin-bottom: 48px; }
+  @media (min-width: 1024px) { .process h2 { margin-bottom: 56px; } }
+  .steps { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 560px) { .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  @media (min-width: 960px) { .steps { grid-template-columns: repeat(4, 1fr); gap: 0; } }
+  .step { border-left: 1px solid rgba(246, 243, 236, 0.16); padding-left: 24px; padding-right: 12px; }
+  .step .num { font-family: var(--mono); font-size: 13px; color: var(--orange); margin-bottom: 22px; }
+  .step h3 { font-family: var(--disp); font-weight: 600; font-size: 21px; color: var(--paper); margin-bottom: 12px; }
+  .step p { font-size: 14.5px; line-height: 1.55; color: rgba(246, 243, 236, 0.58); }
+
+  /* ---------- Work ---------- */
+  .work-feature { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+  @media (min-width: 860px) { .work-feature { grid-template-columns: 1fr 1fr; gap: 56px; } }
+  .work-feature h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 18px; }
+  .work-feature .lede { font-size: 17px; line-height: 1.6; color: var(--mut); margin-bottom: 28px; }
+  .work-stats { display: flex; flex-wrap: wrap; gap: 28px 40px; }
+  .work-stats .stat .big { font-family: var(--disp); font-weight: 600; font-size: 24px; }
+  .work-stats .stat .sub { font-size: 13.5px; color: var(--mut); margin-top: 4px; }
+  .work-feature .ph { height: clamp(240px, 40vw, 360px); }
+  .work-shots { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+  @media (min-width: 560px) { .work-shots { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+  .work-shots .ph { height: 150px; }
+  .work-feature .ord-img { order: -1; }
+  @media (min-width: 860px) { .work-feature .ord-img { order: 0; } }
+
+  /* ---------- Work carousel ---------- */
+  /* Stage flanks the clipped carousel with a translucent arrow on each side */
+  .work-stage { position: relative; }
+  .work-carousel { overflow: hidden; margin: 0 64px; }
+  .work-carousel.single { margin: 0; }
+  .work-track { display: flex; transition: transform .5s cubic-bezier(.4, 0, .2, 1); will-change: transform; }
+  .work-slide { flex: 0 0 100%; width: 100%; }
+  @media (prefers-reduced-motion: reduce) { .work-track { transition: none; } }
+
+  .work-arrow {
+    position: absolute; top: clamp(120px, 20vw, 180px); transform: translateY(-50%);
+    z-index: 4; display: inline-flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border-radius: 50%; color: var(--ink);
+    background: rgba(246, 243, 236, 0.5);
+    border: 1px solid rgba(23, 19, 13, 0.10);
+    -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px);
+    box-shadow: 0 2px 16px rgba(23, 19, 13, 0.07);
+    transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .work-arrow-prev { left: 0; }
+  .work-arrow-next { right: 0; }
+  .work-arrow:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: 0 8px 24px rgba(23, 19, 13, 0.18); }
+  .work-arrow:active { transform: translateY(-50%) scale(0.93); }
+  .work-arrow:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+  .work-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .work-arrow.hidden { display: none; }
+  @media (max-width: 680px) {
+    .work-carousel { margin: 0 48px; }
+    .work-arrow { width: 42px; height: 42px; }
+    .work-arrow svg { width: 18px; height: 18px; }
+  }
+
+  .work-dots { display: flex; justify-content: center; gap: 10px; margin-top: 44px; }
+  .work-dot {
+    width: 8px; height: 8px; border-radius: 50%; padding: 0;
+    border: 1px solid var(--ink); background: transparent;
+    transition: background .18s, transform .18s; flex: none;
+  }
+  .work-dot:hover { transform: scale(1.3); }
+  .work-dot[aria-selected="true"] { background: var(--orange); border-color: var(--orange); }
+  .work-dots.single { display: none; }
+
+  /* ---------- Contact (orange) ---------- */
+  .contact { background: var(--orange); }
+  .contact-inner { display: grid; grid-template-columns: 1fr; gap: 44px; padding-top: 80px; padding-bottom: 84px; }
+  @media (min-width: 860px) { .contact-inner { grid-template-columns: 0.9fr 1.1fr; gap: 76px; } }
+  .contact h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(40px, 6vw, 52px); letter-spacing: -0.03em; color: var(--ink); line-height: 0.98; margin-bottom: 20px; }
+  .contact .lede { font-size: 16.5px; line-height: 1.6; color: rgba(23, 19, 13, 0.72); max-width: 360px; margin-bottom: 26px; }
+  .contact .mailto { display: flex; align-items: center; gap: 10px; font-family: var(--disp); font-weight: 600; font-size: 16px; color: var(--ink); }
+  .form { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 560px) { .form { grid-template-columns: 1fr 1fr; } }
+  .form input, .form textarea {
+    font-family: var(--body); font-size: 15px; color: var(--ink); background: var(--paper);
+    border: 1px solid var(--ink); padding: 15px 16px; outline: none; width: 100%;
+    border-radius: 2px; box-sizing: border-box;
+  }
+  .form input::placeholder, .form textarea::placeholder { color: rgba(23, 19, 13, 0.45); }
+  .form input:focus, .form textarea:focus { box-shadow: inset 0 0 0 1px var(--ink); }
+  .form .full { grid-column: 1 / -1; }
+  .form textarea { resize: vertical; min-height: 110px; }
+  .form button { font-family: var(--disp); font-weight: 600; font-size: 16px; color: var(--orange); background: var(--ink); padding: 17px; border-radius: 2px; border: none; transition: opacity .15s; }
+  .form button:hover { opacity: 0.9; }
+
+  /* ---------- Footer ---------- */
+  .footer { background: var(--ink); }
+  .footer-inner { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; padding-top: 40px; padding-bottom: 40px; }
+  .footer .brand { color: var(--paper); font-size: 16px; }
+  .footer .brand .diamond { width: 12px; height: 12px; }
+  .footer .copy { margin-left: auto; font-size: 13.5px; color: rgba(246, 243, 236, 0.5); }
+
+  .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* ---------- Selected-work media (clickable) ---------- */
+  .ph.media { cursor: pointer; }
+  .ph.media img { transition: transform 0.45s ease; }
+  .ph.media:hover img, .ph.media:focus-visible img { transform: scale(1.045); }
+  .ph.media:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+  /* GIF-like clip — autoplays, loops, muted, fills the frame. */
+  .ph .inline-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; background: #000;
+  }
+
+  /* ---------- Lightbox / preview ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+    padding: 4vmin; background: rgba(23, 19, 13, 0.88); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    opacity: 0; visibility: hidden; transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  .lightbox.open { opacity: 1; visibility: visible; }
+  .lightbox-inner {
+    max-width: min(1100px, 94vw); max-height: 90vh; display: flex; align-items: center; justify-content: center;
+    transform: scale(0.96); transition: transform 0.28s ease;
+  }
+  .lightbox.open .lightbox-inner { transform: scale(1); }
+  .lightbox-inner img, .lightbox-inner video {
+    display: block; max-width: 100%; max-height: 90vh; width: auto; height: auto;
+    border-radius: 4px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); background: #000;
+  }
+  .lightbox-close {
+    position: absolute; top: 18px; right: 18px; z-index: 3; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    background: rgba(246, 243, 236, 0.12); border: 1px solid rgba(246, 243, 236, 0.28); border-radius: 50%;
+    color: var(--paper); transition: background 0.25s ease;
+  }
+  .lightbox-close:hover, .lightbox-close:focus-visible { background: rgba(246, 243, 236, 0.24); }
+  .lightbox-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox, .lightbox-inner, .ph.media img { transition: none; }
+  }
+</style>
 </head>
-
-
 <body>
-	
-<div id="wrapper">
-	
-	<header>
-<!-- logo do site-->
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="diamond"></span>Meganeura Games</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a class="lnk" href="#top">Home</a>
+        <!-- <a class="lnk" href="#work">Games</a> -->
+        <a class="lnk" href="#about">About us</a>
+        <a class="lnk" href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Start a project</a>
+      </div>
+    </div>
+  </nav>
 
-<div id="logo">
-<img id="megalogo" src="Images/Icon_Rectangle_Alpha.png"/>
-<div class="tituloCont">
-<img id="Tmeganeura" src="Images/Text_Meganeura_black.png"/>
-<img id="Tgames" src="Images/Text_Games.png"/>
-</div>
-<a class="menu-icon" onClick="toggleMenu()"><i class="fas fa-bars"></i></a>
+  <!-- ============ HERO ============ -->
+  <header class="wrap hero" id="top">
+    <div class="eyebrow">Game development outsourcing</div>
+    <h1>Full-cycle game development, handled in one studio.</h1>
+    <p class="lede">Meganeura is a game studio that takes projects from first concept to launch — art, code, animation and audio under one roof. No vendor juggling, no handoffs lost in translation.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Tell us about your project</a>
+      <a class="btn btn-ghost" href="#work">See our work</a>
+    </div>
+    <div class="ph"><img src="Images/WallPaper1920_1080.png" alt="Meganeura Games studio showreel" /></div>
+  </header>
 
-</div>
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trust">
+    <div class="wrap trust-inner">
+      <span class="label">What you get</span>
+      <div class="items">
+        <span><span class="mark-ring sm"></span>Unity &amp; Unreal</span>
+        <span><span class="mark-ring sm"></span>Remote-friendly</span>
+        <span><span class="mark-ring sm"></span>Full pipeline in-house</span>
+        <span><span class="mark-ring sm"></span>Work-for-hire &amp; co-dev</span>
+      </div>
+    </div>
+  </section>
 
-		
-		<div class="menu" id="menu">
-		<a  href="#Home">Home</a>
-		<a  href="#Games">Games</a>
-		<a  href="#AboutUs">About Us</a>
-		<a  href="#Contact">Contact</a>
-		</div>
-		
-		<a class="idi-icon" onClick="toggleIdi()"><i id="arrow" class="fa-solid fa-caret-down"></i><i class="fa-solid fa-globe"></i></a>
-		
-	</header>
-	
-			<div class="mobile-menu-container loadmenu" id="mobile-menu-container">
-				
-					<a onClick="toggleMenu()" href="#Home">Home</a>
-					<a onClick="toggleMenu()" href="#Games">Games</a>
-					<a onClick="toggleMenu()" href="#AboutUs">About Us</a>
-					<a onClick="toggleMenu()" href="#Contact">Contact</a>
-					<a onClick="toggleIdiMenu()">Language<i id="arrow" class="fa-solid fa-caret-down"></i></a>	
-			</div>
-						<div class="mobile-idioma loadmenu" id="mobile-idioma">
-						<a onClick="toggleIdiMenu()" href="index.html"><img style="width:15px;" src="Images/en.png">English</a>
-						<a onClick="toggleIdiMenu()" href="index_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
-						</div>
-			
-		
-	
-		<div class="idioma" id="idioma">
-		<a onClick="toggleIdi()" href="index.html"><img style="width:15px;" src="Images/en.png">English</a>
-		<a onClick="toggleIdi()" href="index_PT.html"><img style="width:15px;" src="Images/pt.png">Português</a>
-		</div>
-	
-				<div class="bloco" id="Home"></div>
-				<div class="Home">
-					<div class="main">
-				
-					<video id="bg-video" autoplay muted loop poster="Images/Prints/print2.jpg">
-					<source src="Images/Site_BackgroundVideo.mp4" type="video/mp4">
-					</video>
-					
-					<div class="maininfo">
-					<div class="content">
-					<h1>Welcome!</h1>
-					<p>WE ARE MEGANEURA GAMES, A GROUP OF INDIE DEVELOPERS FROM BELO HORIZONTE, BRAZIL.</p>
-					<p>CURRENTLY, WE ARE WORKING ON FARM YOUR FRIENDS, WHICH SOON WILL BE AVAILABLE ON STEAM!</p>
-					<p>YOU CAN ADD IT TO YOUR STEAM'S WISHLIST</p>
-					<a class="button" href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-					Check it Out
-					</a>
-					</div>
-					</div>
-					
-					</div>
-				</div>
-				
-				
-				<div id="Games">
-				
-				<div class="bgborder">
-				<div class="backg">
-				<div class="mask">
-				<div class="overlay">
-				
-				<div class="gamescont">
-				<h1>Our Games</h1>
-				
-				<div class="gcontainer">
-				<div class="gamecard" id="gd" onmouseover="mouseOver()" onmouseout="mouseOut()">
-				<a href="FarmYourFriends.html"><img src="Images/LibraryCapsule_1.6.png"/></a>
-				<a class="gamename" id="gn" href="FarmYourFriends.html">Farm Your Friends</a>
-				</div>
-				</div>
-				
-				
-				<div class="mobile-gcontainer">
-				<div class="mobile-gamecard" id="gd">
-				<a href="FarmYourFriends.html"><img src="Images/LibraryCapsule_1.6.png"/></a>
-				<a class="mobile-gamename" id="gn" href="FarmYourFriends.html">Farm Your Friends</a>
-				</div>
-				</div>
-				
-				
-				</div>
-				
-				</div>
-				</div>
-				</div>
-				</div>
-				
-				
-				</div>
-				
-				
-				<div id="AboutUs">
-				
-				<div class="AboutBord">
-				<div class="Aboutbg">
-				<div class="AboutSh">
-				
-					<div class="AboutCont">
-					<div class="div1">
-					<h1>About Us</h1>
-					<p>We are five independent game developers with a dream of making amazing games. We've met during game design college in Belo Horizonte and since then we've been working together as an indie studio called Meganeura Games. Our first game is Farm Your Friends, a fast-paced competitive farming game for 8 players.</p>
-					</div>
-					
-					<div class="div2">
-					
-					<h1>The team:</h1>
-					<div class="members">
-					<div><img src="Images/bigcat.png"><h4>ANDRÉ GONÇALVES PACHECO</h4><p>Project Manager</br>Programmer</br>Sound Designer</p></div>
-					<div class="down"><img src="Images/ygo.png"><h4>HYGOR AUGUSTO REIS ANDRADE</h4><p>2D Artist</br>3D Artist</br>UI Artist</p></div>
-					<div><img src="Images/lulu.png"><h4>LUISA MIRANDA DOS SANTOS PACHECO</h4><p>Animator</br>Rigger</p></div>
-					<div class="down"><img src="Images/mari.png"><h4>MARIANA SOARES MATEUS</h4><p>3D Artist</br>Scenario Designer</p></div>
-					<div><img src="Images/dus.png"><h4>SARAH RAMOS DE ARAÚJO</h4><p>2D Artist</br>3D Artist</br>VFX Artist</br>Music Composer</p></div>
-					</div>
-				
-					</div>
-					</div>
-				
-				</div>
-				</div>
-				</div>
-				</div>
-				
-				
-				<div id="Contact">
-				
-				
-				<div class="ContactBord">
-				<div class="Contactbg">
-				<div class="ContactImg">
-				<div class="ContactOverlay">
-				<div class="form">
-				<div id="contact">
-				<h1>Send us an e-mail</h1>
-				<form class="contact-form" action="https://formspree.io/xzbayewp" method="POST">
-					<input type="text" name="name" placeholder="Your Name">
-					<input type="text" name="mail" placeholder="Your E-mail">
-					<input type="text" name="subject" placeholder="Subject">
-					<textarea name="message" placeholder="Your Message"></textarea>
-					<button type="submit" name="submit">Send</button>
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
-				</div>
-				
-				</div>
-				
-				
-				
-				
-	</div>
-	
-<script type="text/javascript">
-var slideIndex = 1;
-showSlides(slideIndex);
+  <!-- ============ SERVICES ============ -->
+  <section class="wrap sec" id="services">
+    <div class="sec-head">
+      <h2>Every discipline your game needs</h2>
+      <p>Pick one team for a slice, or the whole pipeline end to end.</p>
+    </div>
+    <div class="grid-svc">
+      <div class="svc"><span class="mark-ring"></span><h3>Concept &amp; 2D Art</h3><p>Visual development, characters, environments, key art.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>3D Art &amp; Environments</h3><p>Modeling, texturing, optimization for any engine.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>Animation &amp; Rigging</h3><p>Character rigs, gameplay and cinematic animation.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>VFX</h3><p>Real-time effects that read clearly and run light.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>Programming</h3><p>Gameplay, tools and systems in Unity &amp; Unreal.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>Audio &amp; Music</h3><p>Original score, SFX and implementation.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>Game &amp; Level Design</h3><p>Systems, economy and level craft.</p></div>
+      <div class="svc"><span class="mark-ring"></span><h3>UI / UX</h3><p>Interface art and flows players understand instantly.</p></div>
+    </div>
+  </section>
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="about">
+    <div class="wrap sec">
+      <h2>How we run our projects</h2>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><h3>Discovery</h3><p>We scope the work, lock the art target and agree a plan you can hold us to.</p></div>
+        <div class="step"><div class="num">02</div><h3>Production</h3><p>A dedicated team builds in your pipeline, with weekly builds and clear ownership.</p></div>
+        <div class="step"><div class="num">03</div><h3>Polish &amp; QA</h3><p>We tune feel, fix the long tail and test on target hardware.</p></div>
+        <div class="step"><div class="num">04</div><h3>Handover</h3><p>Source files, docs and support so your team can run with it.</p></div>
+      </div>
+    </div>
+  </section>
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+  <!-- ============ WORK ============ -->
+  <!--
+    To add / edit projects, jump to the PROJECTS array near the bottom of this
+    file (in the <script>). Each object is one slide — no markup to touch here.
+  -->
+  <section class="wrap sec" id="work">
+    <div class="eyebrow" style="margin-bottom: 34px;">Selected work</div>
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("slide-img");
-  var dots = document.getElementsByClassName("demo");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
+    <div class="work-stage">
+      <button class="work-arrow work-arrow-prev" id="workPrev" type="button" aria-label="Previous project">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
 
-if (window.innerWidth <= 600){
-var vid = document.getElementById("bg-video");
-vid.autoplay = false;
-vid.preload = "none";
-vid.style.display = "none";
-}
-/*
-function toggleMenu(){
-var menuBox = document.getElementById('mobile-menu-container');
-var modalPage = document.getElementById("myModal");
-if (window.innerWidth <= 600){
-	if (menuBox.style.display == "flex"){
-		menuBox.style.display = "none";
-	}
-	else{
-	menuBox.style.display = "flex";
-		if(modalPage.style.display == "block"){modalPage.style.display = "none"}
-	}
-}
-}*/
+      <div class="work-carousel" id="workCarousel">
+        <div class="work-track" id="workTrack"><!-- slides injected by JS --></div>
+      </div>
 
-function toggleMenu(){
-const menuBox = document.getElementById('mobile-menu-container');
-const IdiomaBox = document.getElementById('mobile-idioma');
+      <button class="work-arrow work-arrow-next" id="workNext" type="button" aria-label="Next project">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+      </button>
+    </div>
 
-menuBox.classList.remove("loadmenu");
-menuBox.classList.add("bigger");
-window.toggleMenu = () => {
-	
-  if (menuBox.classList.contains("smaller")) {
-    menuBox.classList.remove("smaller");
-    menuBox.classList.add("bigger");
-  } 
-  else {
-			if(IdiomaBox.classList.contains("bigger")){
-			IdiomaBox.classList.remove("bigger");
-			IdiomaBox.classList.add("smaller");
-			} 
-  
-    menuBox.classList.remove("bigger");
-    menuBox.classList.add("smaller");
-	
-  }
-}
-}
+    <div class="work-dots" id="workDots" role="tablist" aria-label="Choose project"></div>
+    <p class="visually-hidden" id="workCount" aria-live="polite"></p>
+  </section>
 
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <h2>Let's build it</h2>
+        <p class="lede">Tell us what you're building and where you need a hand. We reply within two business days.</p>
+        <a class="mailto" href="/cdn-cgi/l/email-protection#68000d04040728050d0f09060d1d1a090f09050d1b460b0705"><span class="mark-ring sm ink"></span><span class="__cf_email__" data-cfemail="1e767b7272715e737b797f707b6b6c7f797f737b6d307d7173">[email&#160;protected]</span></a>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <input type="text" name="name" placeholder="Name" aria-label="Name" required />
+        <input type="text" name="company" placeholder="Studio / company" aria-label="Studio or company" />
+        <input type="email" name="email" placeholder="Email" aria-label="Email" required />
+        <input type="text" name="need" placeholder="What do you need? (art, code, full game…)" aria-label="What do you need" />
+        <textarea class="full" name="message" placeholder="A few words about the project" aria-label="Message"></textarea>
+        <button class="full" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </section>
 
-function toggleIdiMenu(){
-const IdimenuBox = document.getElementById('mobile-idioma');
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><span class="diamond"></span>Meganeura Games</a>
+      <span class="copy">© 2026 Meganeura Games — game development studio</span>
+    </div>
+  </footer>
 
-IdimenuBox.classList.remove("loadmenu");
-IdimenuBox.classList.add("bigger");
+  <!-- ============ MEDIA PREVIEW (lightbox) ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Media preview">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <div class="lightbox-inner" id="lightboxInner"></div>
+  </div>
 
-window.toggleIdiMenu = () => {
-	
-  if (IdimenuBox.classList.contains("smaller")){
-    IdimenuBox.classList.remove("smaller");
-    IdimenuBox.classList.add("bigger");
-	
-  } else { 
-    IdimenuBox.classList.remove("bigger");
-    IdimenuBox.classList.add("smaller");
-  }
-}
-}
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Mobile nav toggle
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
 
+    // ====================================================================
+    //  SELECTED WORK — add or edit projects here.
+    //  Each object below is one slide. Copy a block, change the fields,
+    //  and the carousel updates itself (arrows/dots appear automatically).
+    //    title  : project name
+    //    lede   : short paragraph
+    //    stats  : up to 3 { big, sub } pairs (optional, can be [])
+    //    image  : main feature image (src + alt) — shown when there's no video
+    //    video  : optional { src, poster } — turns the feature into a
+    //             GIF-like clip that autoplays, loops and is muted (no
+    //             controls, no click). `poster` shows only while the clip
+    //             loads; falls back to `image.src` if none is given.
+    //    shots  : row of smaller screenshots (0–3 look best; optional)
+    //  Clicking a still image opens it in a centred preview overlay.
+    // ====================================================================
+    var PROJECTS = [
+      {
+        title: 'Farm Your Friends',
+        lede: 'Our own title, shipped end to end — design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
+        stats: [
+          { big: 'In-house', sub: 'Every discipline' },
+          { big: 'End to end', sub: 'Concept to release' },
+          { big: 'Original', sub: 'Score & SFX' }
+        ],
+        image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends — gameplay' },
+        // Replace `src` with the real gameplay clip when it's ready.
+        video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
+        shots: [
+          { src: 'Images/Prints/print1.jpg', alt: 'Farm Your Friends screenshot 1' },
+          { src: 'Images/Prints/print2.jpg', alt: 'Farm Your Friends screenshot 2' },
+          { src: 'Images/Prints/print3.jpg', alt: 'Farm Your Friends screenshot 3' }
+        ]
+      },
+	  {
+        title: 'Farm Your Friends 2',
+        lede: 'Our own title, shipped end to end — design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
+        stats: [
+          { big: 'In-house', sub: 'Every discipline' },
+          { big: 'End to end', sub: 'Concept to release' },
+          { big: 'Original', sub: 'Score & SFX' }
+        ],
+        image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends — gameplay' },
+        video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
+        shots: [
+          { src: 'Images/Prints/print1.jpg', alt: 'Farm Your Friends screenshot 1' },
+          { src: 'Images/Prints/print2.jpg', alt: 'Farm Your Friends screenshot 2' },
+          { src: 'Images/Prints/print3.jpg', alt: 'Farm Your Friends screenshot 3' }
+        ]
+      }
+      // ,{
+      //   title: 'Next Project',
+      //   lede: 'What you built and the part Meganeura played.',
+      //   stats: [{ big: 'Unreal 5', sub: 'Engine' }, { big: '8 months', sub: 'Production' }],
+      //   image: { src: 'Images/Prints/print4.jpg', alt: 'Next Project — key art' },
+      //   shots: [{ src: 'Images/Prints/print5.jpg', alt: 'Next Project screenshot' }]
+      // }
+    ];
 
-function toggleIdi(){
-const IdiBox = document.getElementById('idioma');
-const seta = document.getElementById('arrow');
-window.isSmall = false;
-IdiBox.style.display = "flex";
-seta.classList.add("fa-caret-up");
+    (function () {
+      var track = document.getElementById('workTrack');
+      var dotsWrap = document.getElementById('workDots');
+      var count = document.getElementById('workCount');
+      var prev = document.getElementById('workPrev');
+      var next = document.getElementById('workNext');
+      var carousel = document.getElementById('workCarousel');
+      if (!track) return;
 
-window.toggleIdi = () => {
-  if (isSmall) {
-    IdiBox.classList.remove("smaller");
-    IdiBox.classList.add("bigger");
-	seta.classList.remove("fa-caret-down");
-	seta.classList.add("fa-caret-up");
-	
-  } else {
-    IdiBox.classList.remove("bigger");
-    IdiBox.classList.add("smaller");
-	seta.classList.remove("fa-caret-up");
-	seta.classList.add("fa-caret-down");
-	
-  }
-  isSmall = !isSmall;
-}
+      function esc(s) {
+        return String(s).replace(/[&<>"]/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+        });
+      }
 
-}
+      function slideHTML(p) {
+        var stats = (p.stats || []).map(function (s) {
+          return '<div class="stat"><div class="big">' + esc(s.big) +
+            '</div><div class="sub">' + esc(s.sub) + '</div></div>';
+        }).join('');
+        var shots = (p.shots || []).map(function (s) {
+          return '<div class="ph media" tabindex="0" role="button" aria-label="View ' + esc(s.alt || 'screenshot') +
+            '" data-image="' + esc(s.src) + '" data-alt="' + esc(s.alt || '') + '">' +
+            '<img src="' + esc(s.src) + '" alt="' + esc(s.alt || '') + '" loading="lazy" /></div>';
+        }).join('');
 
+        var imgAlt = (p.image && p.image.alt) || p.title;
+        var feature;
+        if (p.video && p.video.src) {
+          var poster = esc(p.video.poster || (p.image && p.image.src) || '');
+          // Plays like a GIF: autoplay, looped, muted, no controls, no click.
+          feature =
+            '<div class="ph orange ord-img" role="img" aria-label="' + esc(imgAlt) + '">' +
+              '<video class="inline-video" src="' + esc(p.video.src) + '"' +
+                (poster ? ' poster="' + poster + '"' : '') +
+                ' autoplay loop muted playsinline preload="metadata"></video>' +
+            '</div>';
+        } else {
+          feature =
+            '<div class="ph orange ord-img media" tabindex="0" role="button" aria-label="View ' + esc(imgAlt) +
+              '" data-image="' + esc(p.image.src) + '" data-alt="' + esc(p.image.alt || '') + '">' +
+              '<img src="' + esc(p.image.src) + '" alt="' + esc(p.image.alt || '') + '" />' +
+            '</div>';
+        }
 
-function mouseOver() {
-  document.getElementById("gd").style.padding = "10px 0 70px 0";
-  document.getElementById("gn").style.transform = "translateY(-1rem)";
-  document.getElementById("gn").style.opacity = "1";
-  document.getElementById("gn").style.transitionTimingFunction = "ease-out";
-}
-function mouseOut() {
-  document.getElementById("gd").style.padding = "10px 0 10px 0";
-  document.getElementById("gn").style.transform = "translateY(-2rem)";
-  document.getElementById("gn").style.opacity = "0";
-  document.getElementById("gn").style.transitionTimingFunction = "ease";
-}
+        return '' +
+          '<div class="work-feature">' +
+            '<div>' +
+              '<h2>' + esc(p.title) + '</h2>' +
+              '<p class="lede">' + esc(p.lede) + '</p>' +
+              (stats ? '<div class="work-stats">' + stats + '</div>' : '') +
+            '</div>' +
+            feature +
+          '</div>' +
+          (shots ? '<div class="work-shots">' + shots + '</div>' : '');
+      }
 
+      var total = PROJECTS.length;
+      var single = total <= 1;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var DUR = reduced ? 0 : 500; // must match .work-track transition
 
+      function slideEl(p) {
+        return '<div class="work-slide" role="group" aria-roledescription="slide">' + slideHTML(p) + '</div>';
+      }
 
+      // For an infinite loop we clone the last project before the first and the
+      // first after the last, then silently "teleport" across the seam.
+      var render = single ? PROJECTS
+        : [PROJECTS[total - 1]].concat(PROJECTS, [PROJECTS[0]]);
+      track.innerHTML = render.map(slideEl).join('');
+      var slides = Array.prototype.slice.call(track.children);
 
-$(document).ready(function() {
-    // Checa ao iniciar a página
-    checkSize();
+      // Build dots (one per real project)
+      dotsWrap.innerHTML = PROJECTS.map(function (p, i) {
+        return '<button class="work-dot" type="button" role="tab" aria-label="' +
+          esc(p.title) + '" data-i="' + i + '"></button>';
+      }).join('');
+      var dots = Array.prototype.slice.call(dotsWrap.children);
 
-    // Testa ao mudar o tamanho da tela
-    $(window).resize(checkSize);
-});
+      // Hide chrome when there's only one project
+      prev.classList.toggle('hidden', single);
+      next.classList.toggle('hidden', single);
+      dotsWrap.classList.toggle('single', single);
+      carousel.classList.toggle('single', single);
 
-//Function to the css rule
-function checkSize(){
-var menu = document.getElementById('menu');
-    if ($(".menu").css("display") == "none" && window.innerWidth > 600){
-        menu.style.display = "flex";
-		location.reload();
-    }
-	
-	if ($(".menu").css("display") == "flex" && window.innerWidth <= 600){
-        menu.style.display = "none";
-		location.reload();
-    }
-}
+      var pos = single ? 0 : 1;   // track position incl. clones
+      var moving = false;
 
-//MODAL GALLERY
+      function place(animate) {
+        track.style.transition = animate ? '' : 'none';
+        track.style.transform = 'translateX(' + (-pos * 100) + '%)';
+        if (!animate) { void track.offsetWidth; } // flush the jump
+      }
 
-function openModal(){
-	var menu = document.getElementById('menu');
-	var logomenu = document.getElementById('logo');
-	document.getElementById("myModal").style.display = "block";
-	
-	if (document.getElementById("myModal").style.display == "block" && window.innerWidth <= 600){
-		logomenu.style.display = "none";
-		document.getElementById("myModal").style.marginTop = "0";
-		
-		if(menu.style.display == "flex"){
-		menu.style.display = "none";
-		}
-	}
-}
+      function sync() {
+        var real = single ? 0 : ((pos - 1) + total) % total;
+        count.textContent = (real + 1) + ' / ' + total;
+        slides.forEach(function (s, i) { s.setAttribute('aria-hidden', String(i !== pos)); });
+        dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === real)); });
+      }
 
-function closeModal(){
-	var logomenu = document.getElementById('logo');
-	document.getElementById("myModal").style.display = "none";
-	
-	if (document.getElementById("myModal").style.display == "none" && window.innerWidth <= 600){
-		logomenu.style.display = "flex";
-	}
-}
+      function move(dir) {
+        if (moving || single) return;
+        moving = true;
+        pos += dir;
+        place(true);
+        sync();
+        window.setTimeout(function () {
+          if (pos === render.length - 1) { pos = 1; place(false); }       // past last → real first
+          else if (pos === 0) { pos = total; place(false); }              // before first → real last
+          sync();
+          moving = false;
+        }, DUR);
+      }
 
-var modalIndex = 1;
-modalSlides(modalIndex);
+      function goTo(real) {
+        if (moving || single) return;
+        moving = true;
+        pos = real + 1;
+        place(true);
+        sync();
+        window.setTimeout(function () { moving = false; }, DUR);
+      }
 
-// Next/previous controls
-function plusModal(n) {
-  modalSlides(modalIndex += n);
-}
+      prev.addEventListener('click', function () { move(-1); });
+      next.addEventListener('click', function () { move(1); });
+      dots.forEach(function (d) {
+        d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-i'), 10)); });
+      });
 
-// Thumbnail image controls
-function currentModal(n) {
-  modalSlides(modalIndex = n);
-}
+      // Keyboard arrows when the carousel has focus
+      carousel.setAttribute('tabindex', '0');
+      carousel.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { move(-1); }
+        else if (e.key === 'ArrowRight') { move(1); }
+      });
 
-function modalSlides(n){
-var i;
-var modalS = document.getElementsByClassName("modal-slide-img");
+      // Touch swipe
+      var x0 = null;
+      carousel.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) { move(dx < 0 ? 1 : -1); }
+        x0 = null;
+      });
 
-if (n > modalS.length){modalIndex = 1}
-if (n < 1) {modalIndex = modalS.length}
-for (i = 0; i < modalS.length; i++){
-	modalS[i].style.display = "none";
-}
-modalS[modalIndex-1].style.display = "block";
-}
+      place(false);
+      sync();
 
-</script>
+      // ---- Media preview (lightbox) ----------------------------------
+      var lightbox = document.getElementById('lightbox');
+      var lbInner = document.getElementById('lightboxInner');
+      var lbClose = document.getElementById('lightboxClose');
+      var lastFocus = null;
+
+      function openLightbox(html) {
+        lbInner.innerHTML = html;
+        lastFocus = document.activeElement;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightbox.classList.contains('open')) return;
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbInner.innerHTML = ''; // unloads any playing video
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function activate(el) {
+        if (el.hasAttribute('data-image')) {
+          openLightbox('<img src="' + esc(el.getAttribute('data-image')) +
+            '" alt="' + esc(el.getAttribute('data-alt') || '') + '" />');
+        }
+      }
+
+      track.addEventListener('click', function (e) {
+        var el = e.target.closest && e.target.closest('.ph.media');
+        if (el) activate(el);
+      });
+      track.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+        var el = e.target.closest && e.target.closest('.ph.media');
+        if (el) { e.preventDefault(); activate(el); }
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+    })();
+
+    // Contact form — Formspree
+    // Replace YOUR_FORM_ID with your Formspree form ID (formspree.io → New Form)
+    (function () {
+      var FORMSPREE_ID = 'xzbayewp';
+      var form = document.getElementById('contactForm');
+      var btn = form.querySelector('button[type="submit"]');
+
+      form.setAttribute('action', 'https://formspree.io/f/' + FORMSPREE_ID);
+      form.setAttribute('method', 'POST');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+          btn.textContent = 'Set your Formspree ID first';
+          setTimeout(function () { btn.textContent = 'Send enquiry'; }, 2400);
+          return;
+        }
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (res) {
+          if (res.ok) {
+            btn.textContent = 'Thanks — we\'ll be in touch ✓';
+            form.reset();
+            setTimeout(function () { btn.textContent = 'Send enquiry'; btn.disabled = false; }, 4000);
+          } else {
+            return res.json().then(function (data) { throw data; });
+          }
+        })
+        .catch(function (err) {
+          var msg = (err && err.errors) ? err.errors.map(function (e) { return e.message; }).join(', ') : 'Something went wrong';
+          btn.textContent = msg;
+          btn.disabled = false;
+          setTimeout(function () { btn.textContent = 'Send enquiry'; }, 3000);
+        });
+      });
+    })();
+  </script>
 </body>
-
-
-<footer>
-	<div id="info">
-	<p>Meganeura Games</p>
-	<p>Belo Horizonte - Brazil</p>
-	</div>
-	<div id="social">
-	<p>Find us in social media</p>
-	<div class="icon">
-	<a href="https://www.instagram.com/meganeuragames/" target="_blank"><i class="fab fa-instagram"></i></a>
-	<a href="https://store.steampowered.com/app/1285270/Farm_Your_Friends/" target="_blank"><i class="fab fa-steam-symbol"></i>
-	<a href="https://twitter.com/FarmYourFriends" target="_blank"><i class="fab fa-twitter"></i></a>
-	</div>
-	</div>
-</footer>
-
 </html>
