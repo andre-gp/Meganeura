@@ -372,16 +372,14 @@
     }
     .work-mobile { display: grid; gap: 32px; max-width: 620px; margin-inline: auto; }
     .work-card {
-      min-width: 0; border: 1px solid #c6bcae; border-bottom: 3px solid #a99a86;
-      border-radius: 4px; background: #fffaf2;
+      min-width: 0; border-radius: 4px; background: #e4ded1;
     }
     .work-card[open]:not(:last-child) { margin-bottom: 12px; }
-    .work-card[open] { border-bottom-color: #806b52; }
     .work-card summary { display: block; list-style: none; cursor: pointer; }
     .work-card summary::-webkit-details-marker { display: none; }
     .work-card-cover {
       width: 100%; aspect-ratio: var(--cover-ratio, 16 / 9); object-fit: cover;
-      border-radius: 3px 3px 0 0;
+      border-radius: 4px 4px 0 0;
     }
     .work-card-title {
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -390,13 +388,15 @@
     }
     .work-card-toggle {
       display: grid; place-items: center; flex: none; width: 34px; height: 34px;
-      border: 1px solid var(--line); border-radius: 50%;
+      border: 1px solid #9f9686; border-radius: 50%;
     }
     .work-card-toggle svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.5; }
-    .work-card[open] .work-card-toggle { background: var(--ink); color: var(--paper); }
+    .work-card[open] .work-card-toggle { background: var(--ink); border-color: var(--ink); color: var(--paper); }
     .work-card[open] .work-card-toggle .vertical { visibility: hidden; }
-    .work-card-body { padding: 14px; border-top: 1px solid var(--line); scroll-margin-bottom: 16px; }
-    .work-card-body .lede { font-size: 16px; line-height: 1.55; color: #534b40; }
+    .work-card-body {
+      padding: 14px; border-top: 1px solid var(--line); scroll-margin-bottom: 16px;
+    }
+    .work-card-body .lede { font-size: 16px; line-height: 1.55; color: #4e463a; }
     .work-card-body .work-stats { gap: 12px 20px; margin-top: 14px; }
     .work-card-gallery {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
@@ -406,7 +406,10 @@
       aspect-ratio: 4 / 3; min-height: 44px; padding: 0; border: 0; border-radius: 2px;
     }
     .work-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .work-card-actions .btn { min-height: 44px; padding: 8px 12px; font-size: 14px; gap: 8px; }
+    .work-card-actions .btn {
+      min-height: 44px; padding: 8px 12px; font-size: 14px; gap: 8px;
+      border-color: #9f9686;
+    }
     .work-card-actions img { width: 17px; height: 17px; }
     .work-card summary:focus-visible, .work-card-actions .btn:focus-visible {
       outline: 2px solid var(--ink); outline-offset: 2px;
