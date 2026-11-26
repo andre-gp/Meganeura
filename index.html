@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meganeura Games — Full-cycle game development studio</title>
+<title>Meganeura Games | Full-cycle game development studio</title>
 <link rel="icon" href="Images/Icon_Rectangle_Alpha.png" type="image/png" />
-<meta name="description" content="Meganeura is a full-cycle game development studio. Art, code, animation and audio under one roof — from concept to launch." />
+<meta name="description" content="Meganeura is a full-cycle game development studio. Art, code, animation and audio under one roof, from concept to launch." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -271,10 +271,12 @@
 
   /* ---------- Selected-work media (clickable) ---------- */
   .ph.media { cursor: pointer; }
+  .work-feature .ph.use-image-ratio { height: auto; }
+  .ph.use-image-ratio img { display: block; position: static; height: auto; }
   .ph.media img { transition: transform 0.45s ease; }
   .ph.media:hover img, .ph.media:focus-visible img { transform: scale(1.045); }
   .ph.media:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-  /* GIF-like clip — autoplays, loops, muted, fills the frame. */
+  /* GIF-like clip that autoplays, loops, and fills the frame with muted video. */
   .ph .inline-video {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; background: #000;
@@ -331,7 +333,7 @@
   <header class="wrap hero" id="top">
     <div class="eyebrow">Game development outsourcing</div>
     <h1>Full-cycle game development, handled in one studio.</h1>
-    <p class="lede">Meganeura is a game studio that takes projects from first concept to launch — art, code, animation and audio under one roof. No vendor juggling, no handoffs lost in translation.</p>
+    <p class="lede">Meganeura is a game studio that brings art, code, animation and audio together under one roof, from first concept to launch. No vendor juggling, no handoffs lost in translation.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#contact">Tell us about your project</a>
       <a class="btn btn-ghost" href="#work">See our work</a>
@@ -386,7 +388,7 @@
   <!-- ============ WORK ============ -->
   <!--
     To add / edit projects, jump to the PROJECTS array near the bottom of this
-    file (in the <script>). Each object is one slide — no markup to touch here.
+    file (in the <script>). Each object defines one slide.
   -->
   <section class="wrap sec" id="work">
     <div class="eyebrow" style="margin-bottom: 34px;">Selected work</div>
@@ -432,7 +434,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <a class="brand" href="#top"><span class="diamond"></span>Meganeura Games</a>
-      <span class="copy">© 2026 Meganeura Games — game development studio</span>
+      <span class="copy">© 2026 Meganeura Games, game development studio</span>
     </div>
   </footer>
 
@@ -464,14 +466,14 @@
     })();
 
     // ====================================================================
-    //  SELECTED WORK — add or edit projects here.
+    //  Add or edit Selected Work projects below.
     //  Each object below is one slide. Copy a block, change the fields,
     //  and the carousel updates itself (arrows/dots appear automatically).
     //    title  : project name
     //    lede   : short paragraph
     //    stats  : up to 3 { big, sub } pairs (optional, can be [])
-    //    image  : main feature image (src + alt) — shown when there's no video
-    //    video  : optional { src, poster } — turns the feature into a
+    //    image  : main feature image (src + alt, optional width and height) shown when there's no video
+    //    video  : optional { src, poster } to show a
     //             GIF-like clip that autoplays, loops and is muted (no
     //             controls, no click). `poster` shows only while the clip
     //             loads; falls back to `image.src` if none is given.
@@ -481,13 +483,12 @@
     var PROJECTS = [
       {
         title: 'Farm Your Friends',
-        lede: 'Our own title, shipped end to end — design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
+        lede: 'We took our own title from concept to release, handling design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
         stats: [
           { big: 'In-house', sub: 'Every discipline' },
-          { big: 'End to end', sub: 'Concept to release' },
-          { big: 'Original', sub: 'Score & SFX' }
+          { big: 'End to end', sub: 'Concept to release' }
         ],
-        image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends — gameplay' },
+        image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends gameplay' },
         // Replace `src` with the real gameplay clip when it's ready.
         video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
         shots: [
@@ -496,27 +497,21 @@
           { src: 'Images/Prints/print3.jpg', alt: 'Farm Your Friends screenshot 3' }
         ]
       },
-	  {
-        title: 'Farm Your Friends 2',
-        lede: 'Our own title, shipped end to end — design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
-        stats: [
-          { big: 'In-house', sub: 'Every discipline' },
-          { big: 'End to end', sub: 'Concept to release' },
-          { big: 'Original', sub: 'Score & SFX' }
-        ],
-        image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends — gameplay' },
-        video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
+      {
+        title: 'Bacia Hidrográfica Virtual',
+        lede: 'The Federal University of Minas Gerais (UFMG) hired us to develop this educational game about how human activity shapes a watershed. Players collect litter as a fish, make farming decisions, connect sewers to a treatment plant, investigate pollution, plan land use, and test nature-based solutions to urban flooding.',
+        image: { src: 'Images/BHV/splash.webp', alt: 'BHV splash art with a 3D watershed diorama', width: 1818, height: 1417 },
         shots: [
-          { src: 'Images/Prints/print1.jpg', alt: 'Farm Your Friends screenshot 1' },
-          { src: 'Images/Prints/print2.jpg', alt: 'Farm Your Friends screenshot 2' },
-          { src: 'Images/Prints/print3.jpg', alt: 'Farm Your Friends screenshot 3' }
+          { src: 'Images/BHV/lake.webp', alt: 'Lake minigame with a fish, underwater litter, and an oxygen meter' },
+          { src: 'Images/BHV/farm.webp', alt: 'Farming minigame with irrigated crops and a harvest card' },
+          { src: 'Images/BHV/main-menu.webp', alt: 'BHV main menu with a 3D watershed model' }
         ]
       }
       // ,{
       //   title: 'Next Project',
       //   lede: 'What you built and the part Meganeura played.',
       //   stats: [{ big: 'Unreal 5', sub: 'Engine' }, { big: '8 months', sub: 'Production' }],
-      //   image: { src: 'Images/Prints/print4.jpg', alt: 'Next Project — key art' },
+      //   image: { src: 'Images/Prints/print4.jpg', alt: 'Next Project key art' },
       //   shots: [{ src: 'Images/Prints/print5.jpg', alt: 'Next Project screenshot' }]
       // }
     ];
@@ -559,10 +554,14 @@
                 ' autoplay loop muted playsinline preload="metadata"></video>' +
             '</div>';
         } else {
+          var imageDimensions = p.image.width && p.image.height
+            ? ' width="' + esc(p.image.width) + '" height="' + esc(p.image.height) + '"'
+            : '';
           feature =
-            '<div class="ph orange ord-img media" tabindex="0" role="button" aria-label="View ' + esc(imgAlt) +
+            '<div class="ph orange ord-img media' + (imageDimensions ? ' use-image-ratio' : '') +
+              '" tabindex="0" role="button" aria-label="View ' + esc(imgAlt) +
               '" data-image="' + esc(p.image.src) + '" data-alt="' + esc(p.image.alt || '') + '">' +
-              '<img src="' + esc(p.image.src) + '" alt="' + esc(p.image.alt || '') + '" />' +
+              '<img src="' + esc(p.image.src) + '" alt="' + esc(p.image.alt || '') + '"' + imageDimensions + ' />' +
             '</div>';
         }
 
@@ -718,7 +717,7 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
     })();
 
-    // Contact form — Formspree
+    // Contact form powered by Formspree
     // Replace YOUR_FORM_ID with your Formspree form ID (formspree.io → New Form)
     (function () {
       var FORMSPREE_ID = 'xzbayewp';
@@ -744,7 +743,7 @@
         })
         .then(function (res) {
           if (res.ok) {
-            btn.textContent = 'Thanks — we\'ll be in touch ✓';
+            btn.textContent = 'Thanks! We\'ll be in touch ✓';
             form.reset();
             setTimeout(function () { btn.textContent = 'Send enquiry'; btn.disabled = false; }, 4000);
           } else {
