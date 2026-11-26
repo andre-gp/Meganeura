@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meganeura Games | Full-cycle game development studio</title>
+<title>Meganeura Games</title>
 <link rel="icon" href="Images/Icon_Rectangle_Alpha.png" type="image/png" />
 <meta name="description" content="Meganeura is a full-cycle game development studio. Art, code, animation and audio under one roof, from concept to launch." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -269,7 +269,15 @@
   .form .full { grid-column: 1 / -1; }
   .form textarea { resize: vertical; min-height: 110px; }
   .form button { font-family: var(--disp); font-weight: 600; font-size: 16px; color: var(--orange); background: var(--ink); padding: 17px; border-radius: 2px; border: none; transition: opacity .15s; }
-  .form button:hover { opacity: 0.9; }
+  .form button:hover:not(:disabled) { opacity: 0.9; }
+  .form button.is-sent {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    color: #e4f5e8; background: #205238;
+  }
+  .form button.is-sent::before {
+    content: ""; width: 6px; height: 11px; border: solid currentColor;
+    border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg);
+  }
 
   /* ---------- Footer ---------- */
   .footer { background: var(--ink); }
@@ -436,6 +444,7 @@
         <input class="full" type="email" name="email" placeholder="Email" aria-label="Email" required />
         <textarea class="full" name="message" placeholder="Tell us what you need" aria-label="Project needs"></textarea>
         <button class="full" type="submit">Send</button>
+        <span class="visually-hidden" role="status" id="contactStatus"></span>
       </form>
     </div>
   </section>
@@ -732,16 +741,31 @@
       var FORMSPREE_ID = 'xzbayewp';
       var form = document.getElementById('contactForm');
       var btn = form.querySelector('button[type="submit"]');
+      var status = document.getElementById('contactStatus');
+      var fields = Array.from(form.querySelectorAll('input, textarea'));
       var sendLabel = btn.textContent;
+      var successLabel = "Thanks! We'll be in touch";
+      var feedbackTimer;
 
       form.setAttribute('action', 'https://formspree.io/f/' + FORMSPREE_ID);
       form.setAttribute('method', 'POST');
 
+      form.addEventListener('input', function () {
+        if (!btn.classList.contains('is-sent')) return;
+        if (!fields.every(function (field) { return field.value.trim() && field.validity.valid; })) return;
+        btn.classList.remove('is-sent');
+        btn.textContent = sendLabel;
+        btn.disabled = false;
+        status.textContent = '';
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (btn.disabled) return;
+        clearTimeout(feedbackTimer);
         if (FORMSPREE_ID === 'YOUR_FORM_ID') {
           btn.textContent = 'Set your Formspree ID first';
-          setTimeout(function () { btn.textContent = sendLabel; }, 2400);
+          feedbackTimer = setTimeout(function () { btn.textContent = sendLabel; }, 2400);
           return;
         }
         btn.textContent = 'Sending…';
@@ -753,9 +777,10 @@
         })
         .then(function (res) {
           if (res.ok) {
-            btn.textContent = 'Thanks! We\'ll be in touch ✓';
             form.reset();
-            setTimeout(function () { btn.textContent = sendLabel; btn.disabled = false; }, 4000);
+            btn.textContent = successLabel;
+            btn.classList.add('is-sent');
+            status.textContent = successLabel;
           } else {
             return res.json().then(function (data) { throw data; });
           }
@@ -764,7 +789,7 @@
           var msg = (err && err.errors) ? err.errors.map(function (e) { return e.message; }).join(', ') : 'Something went wrong';
           btn.textContent = msg;
           btn.disabled = false;
-          setTimeout(function () { btn.textContent = sendLabel; }, 3000);
+          feedbackTimer = setTimeout(function () { btn.textContent = sendLabel; }, 3000);
         });
       });
     })();
