@@ -182,9 +182,12 @@
   /* ---------- Work ---------- */
   .work-feature { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; align-content: start; align-items: start; }
   @media (min-width: 860px) { .work-feature { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; } }
-  .work-feature h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 18px; }
-  .work-feature h2 a { text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.15em; }
-  .work-feature h2 a:hover, .work-feature h2 a:focus-visible { text-decoration-color: var(--orange); }
+  .work-title { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+  .work-feature h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; }
+  .work-steam { display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 50%; }
+  .work-steam img { width: 28px; height: 28px; }
+  .work-steam:hover { opacity: 0.7; }
+  .work-steam:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
   .work-feature .lede { font-size: 17px; line-height: 1.6; color: var(--mut); margin-bottom: 28px; }
   .work-stats { display: flex; flex-wrap: wrap; gap: 28px 40px; }
   .work-stats .stat .big { font-family: var(--disp); font-weight: 600; font-size: 24px; }
@@ -203,6 +206,7 @@
   .work-label { margin: 0 var(--work-gutter) 34px; }
   .work-stage { position: relative; }
   .work-controls { display: contents; }
+  .work-controls-bottom { display: none; }
   .work-carousel { overflow: hidden; margin-inline: var(--work-gutter); }
   .work-track { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
   .work-slide {
@@ -234,7 +238,6 @@
   .work-arrow:active { transform: translateY(-50%) scale(0.93); }
   .work-arrow:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   .work-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .work-arrow.hidden { display: none; }
   .work-dots { display: flex; justify-content: center; gap: 10px; margin-top: 44px; }
   .work-dot {
     width: 8px; height: 8px; border-radius: 50%; padding: 0;
@@ -249,12 +252,14 @@
     .work-label, .work-carousel { margin: 0; }
     .work-stage { display: contents; }
     .work-controls { display: flex; gap: 8px; }
+    .work-controls-bottom { grid-column: 1 / -1; justify-content: center; }
     .work-arrow { position: static; transform: none; width: 44px; height: 44px; }
     .work-arrow:active { transform: scale(0.93); }
     .work-arrow svg { width: 18px; height: 18px; }
     .work-carousel { grid-column: 1 / -1; }
     .work-dots { display: none; }
   }
+  .work-controls[hidden] { display: none; }
 
   /* ---------- Contact (orange) ---------- */
   .contact { background: var(--orange); }
@@ -387,13 +392,13 @@
     </div>
     <div class="grid-svc">
       <div class="svc"><h3>Concept &amp; 2D Art</h3><p>Visual development, characters, environments, key art.</p></div>
-      <div class="svc"><h3>3D Art &amp; Environments</h3><p>Modeling, texturing, optimization for any engine.</p></div>
+      <div class="svc"><h3>3D Art &amp; Environments</h3><p>modeling, texturing, sculpture and retopology for any engine</p></div>
       <div class="svc"><h3>Animation &amp; Rigging</h3><p>Character rigs, gameplay and cinematic animation.</p></div>
-      <div class="svc"><h3>VFX</h3><p>Real-time effects that read clearly and run light.</p></div>
+      <div class="svc"><h3>VFX</h3><p>Real-time shaders and particles.</p></div>
       <div class="svc"><h3>Programming</h3><p>Gameplay, tools and systems in Unity &amp; Unreal.</p></div>
       <div class="svc"><h3>Audio &amp; Music</h3><p>Original score, SFX and implementation.</p></div>
       <div class="svc"><h3>Game &amp; Level Design</h3><p>Systems, economy and level craft.</p></div>
-      <div class="svc"><h3>UI &amp; UX</h3><p>Interface art and flows players understand instantly.</p></div>
+      <div class="svc"><h3>UI &amp; UX</h3><p>Interface art and flows.</p></div>
     </div>
   </section>
 
@@ -430,6 +435,15 @@
 
       <div class="work-carousel" id="workCarousel">
         <div class="work-track" id="workTrack"><!-- slides injected by JS --></div>
+      </div>
+
+      <div class="work-controls work-controls-bottom">
+        <button class="work-arrow work-arrow-prev" type="button" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button class="work-arrow work-arrow-next" type="button" aria-label="Next project">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
       </div>
     </div>
 
@@ -496,7 +510,7 @@
     //  Each object below is one slide. Copy a block, change the fields,
     //  and the carousel updates itself (arrows/dots appear automatically).
     //    title  : project name
-    //    url    : optional link for the project title, opens in a new tab
+    //    steamUrl : optional Steam store link beside the project title, opens in a new tab
     //    lede   : short paragraph
     //    stats  : up to 3 { big, sub } pairs (optional, can be [])
     //    image  : main feature image (src + alt, optional cropToFill) shown when there's no video
@@ -510,12 +524,8 @@
     var PROJECTS = [
       {
         title: 'Farm Your Friends',
-        url: 'https://store.steampowered.com/app/1285270/Farm_Your_Friends/',
-        lede: 'We took our own title from concept to release, handling design, art, animation, code and audio. The same team and pipeline we put on client work, proven on a game we own.',
-        stats: [
-          { big: 'In-house', sub: 'Every discipline' },
-          { big: 'End to end', sub: 'Concept to release' }
-        ],
+        steamUrl: 'https://store.steampowered.com/app/1285270/Farm_Your_Friends/',
+        lede: 'Farm Your Friends is a competitive multiplayer farming game we developed entirely in-house. Team up or compete in local matches or online with up to eight players. Grow crops, protect your animals, and raid rival farms to earn the most coins.',
         image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends gameplay' },
         // Replace `src` with the real gameplay clip when it's ready.
         video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
@@ -561,8 +571,6 @@
       var track = document.getElementById('workTrack');
       var dotsWrap = document.getElementById('workDots');
       var count = document.getElementById('workCount');
-      var prev = document.getElementById('workPrev');
-      var next = document.getElementById('workNext');
       var carousel = document.getElementById('workCarousel');
       if (!track) return;
 
@@ -574,9 +582,10 @@
 
       function slideHTML(p) {
         var title = esc(p.title);
-        if (p.url) {
-          title = '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + title + '</a>';
-        }
+        var steamLink = p.steamUrl ?
+          '<a class="work-steam" href="' + esc(p.steamUrl) + '" target="_blank" rel="noopener" aria-label="View ' + title + ' on Steam">' +
+            '<img src="Images/steam.svg" alt="" width="28" height="28" />' +
+          '</a>' : '';
         var stats = (p.stats || []).map(function (s) {
           return '<div class="stat"><div class="big">' + esc(s.big) +
             '</div><div class="sub">' + esc(s.sub) + '</div></div>';
@@ -614,7 +623,7 @@
         return '' +
           '<div class="work-feature">' +
             '<div>' +
-              '<h2>' + title + '</h2>' +
+              '<div class="work-title"><h2>' + title + '</h2>' + steamLink + '</div>' +
               '<p class="lede">' + esc(p.lede) + '</p>' +
               (stats ? '<div class="work-stats">' + stats + '</div>' : '') +
             '</div>' +
@@ -640,8 +649,9 @@
       var dots = Array.prototype.slice.call(dotsWrap.children);
 
       // Hide chrome when there's only one project
-      prev.classList.toggle('hidden', single);
-      next.classList.toggle('hidden', single);
+      document.querySelectorAll('#work .work-controls').forEach(function (controls) {
+        controls.hidden = single;
+      });
       dotsWrap.classList.toggle('single', single);
       carousel.classList.toggle('single', single);
 
@@ -671,8 +681,10 @@
         goTo((current + direction + total) % total);
       }
 
-      prev.addEventListener('click', function () { move(-1); });
-      next.addEventListener('click', function () { move(1); });
+      document.querySelectorAll('#work .work-arrow').forEach(function (arrow) {
+        var direction = arrow.classList.contains('work-arrow-prev') ? -1 : 1;
+        arrow.addEventListener('click', function () { move(direction); });
+      });
       dots.forEach(function (d) {
         d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-i'), 10)); });
       });
