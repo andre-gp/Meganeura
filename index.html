@@ -198,9 +198,11 @@
 
   /* ---------- Work carousel ---------- */
   /* Stage flanks the clipped carousel with a translucent arrow on each side */
+  #work { --work-gutter: 64px; }
+  #work:has(.work-carousel.single) { --work-gutter: 0px; }
+  .work-label { margin: 0 var(--work-gutter) 34px; }
   .work-stage { position: relative; }
-  .work-carousel { overflow: hidden; margin: 0 64px; }
-  .work-carousel.single { margin: 0; }
+  .work-carousel { overflow: hidden; margin-inline: var(--work-gutter); }
   .work-track { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
   .work-slide {
     display: grid; grid-template-rows: subgrid; grid-area: 1 / 1 / span 2;
@@ -225,15 +227,15 @@
     box-shadow: 0 2px 16px rgba(23, 19, 13, 0.07);
     transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .2s;
   }
-  .work-arrow-prev { left: 0; }
-  .work-arrow-next { right: 0; }
+  .work-arrow-prev { left: -10px; }
+  .work-arrow-next { right: -10px; }
   .work-arrow:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); box-shadow: 0 8px 24px rgba(23, 19, 13, 0.18); }
   .work-arrow:active { transform: translateY(-50%) scale(0.93); }
   .work-arrow:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   .work-arrow svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .work-arrow.hidden { display: none; }
   @media (max-width: 680px) {
-    .work-carousel { margin: 0 48px; }
+    #work { --work-gutter: 48px; }
     .work-arrow { width: 42px; height: 42px; }
     .work-arrow svg { width: 18px; height: 18px; }
   }
@@ -400,7 +402,7 @@
     file (in the <script>). Each object defines one slide.
   -->
   <section class="wrap sec" id="work">
-    <div class="eyebrow" style="margin-bottom: 34px;">Selected work</div>
+    <div class="eyebrow work-label">Selected work</div>
 
     <div class="work-stage">
       <button class="work-arrow work-arrow-prev" id="workPrev" type="button" aria-label="Previous project">
