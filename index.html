@@ -95,7 +95,6 @@
     font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: var(--ink);
   }
   .brand-logo { flex: none; }
-  .brand .diamond { width: 14px; height: 14px; background: var(--orange); transform: rotate(45deg); flex: none; }
   .nav-links { margin-left: auto; display: flex; align-items: center; gap: 38px; }
   .nav-links a.lnk { font-size: 15px; color: var(--mut); transition: color .15s; }
   .nav-links a.lnk:hover { color: var(--ink); }
@@ -181,8 +180,8 @@
   .step p { font-size: 14.5px; line-height: 1.55; color: rgba(246, 243, 236, 0.58); }
 
   /* ---------- Work ---------- */
-  .work-feature { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
-  @media (min-width: 860px) { .work-feature { grid-template-columns: 1fr 1fr; gap: 56px; } }
+  .work-feature { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; align-content: start; align-items: start; }
+  @media (min-width: 860px) { .work-feature { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; } }
   .work-feature h2 { font-family: var(--disp); font-weight: 600; font-size: clamp(30px, 4.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 18px; }
   .work-feature h2 a { text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.15em; }
   .work-feature h2 a:hover, .work-feature h2 a:focus-visible { text-decoration-color: var(--orange); }
@@ -190,7 +189,7 @@
   .work-stats { display: flex; flex-wrap: wrap; gap: 28px 40px; }
   .work-stats .stat .big { font-family: var(--disp); font-weight: 600; font-size: 24px; }
   .work-stats .stat .sub { font-size: 13.5px; color: var(--mut); margin-top: 4px; }
-  .work-feature .ph { height: clamp(240px, 40vw, 360px); }
+  .work-feature .ph { aspect-ratio: 3 / 2; }
   .work-shots { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
   @media (min-width: 560px) { .work-shots { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
   .work-shots .ph { height: 150px; }
@@ -202,8 +201,11 @@
   .work-stage { position: relative; }
   .work-carousel { overflow: hidden; margin: 0 64px; }
   .work-carousel.single { margin: 0; }
-  .work-track { display: grid; grid-template-columns: minmax(0, 1fr); }
-  .work-slide { grid-area: 1 / 1; visibility: hidden; }
+  .work-track { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
+  .work-slide {
+    display: grid; grid-template-rows: subgrid; grid-area: 1 / 1 / span 2;
+    visibility: hidden;
+  }
   .work-slide[aria-hidden="false"] { visibility: visible; }
   @media (prefers-reduced-motion: no-preference) {
     .work-track.is-changing .work-slide[aria-hidden="false"] { animation: work-fade-in 280ms ease-out; }
@@ -271,7 +273,6 @@
   .footer { background: var(--ink); }
   .footer-inner { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; padding-top: 40px; padding-bottom: 40px; }
   .footer .brand { color: var(--paper); font-size: 16px; }
-  .footer .brand .diamond { width: 12px; height: 12px; }
   .footer .copy { margin-left: auto; font-size: 13.5px; color: rgba(246, 243, 236, 0.5); }
 
   .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -279,10 +280,12 @@
 
   /* ---------- Selected-work media (clickable) ---------- */
   .ph.media { cursor: pointer; }
-  .work-feature .ph.use-image-ratio { height: auto; }
-  .ph.use-image-ratio img { display: block; position: static; height: auto; }
+  .work-feature .ph.crop-to-fill { background: transparent; }
+  .work-feature .ph.media .work-image-backdrop { filter: blur(14px); transform: scale(1.15); }
+  .work-feature .ph.media .work-image { object-fit: contain; }
+  .work-feature .ph.crop-to-fill .work-image { object-fit: cover; object-position: center 30%; }
   .ph.media img { transition: transform 0.45s ease; }
-  .ph.media:hover img, .ph.media:focus-visible img { transform: scale(1.045); }
+  .work-shots .media:hover img, .work-shots .media:focus-visible img { transform: scale(1.045); }
   .ph.media:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
   /* GIF-like clip that autoplays, loops, and fills the frame with muted video. */
   .ph .inline-video {
@@ -423,14 +426,14 @@
       <div>
         <h2>Let's build it</h2>
         <p class="lede">Tell us what you're building and where you need a hand.</p>
-        <a class="mailto" href="/cdn-cgi/l/email-protection#68000d04040728050d0f09060d1d1a090f09050d1b460b0705"><span class="mark-ring sm ink"></span><span class="__cf_email__" data-cfemail="1e767b7272715e737b797f707b6b6c7f797f737b6d307d7173">[email&#160;protected]</span></a>
+        <a class="mailto" href="mailto:contact@meganeuragames.com"><span class="mark-ring sm ink"></span>contact@meganeuragames.com</a>
       </div>
       <form class="form" id="contactForm" novalidate>
         <input type="text" name="name" placeholder="Name" aria-label="Name" required />
         <input type="text" name="company" placeholder="Studio / company" aria-label="Studio or company" />
         <input class="full" type="email" name="email" placeholder="Email" aria-label="Email" required />
         <textarea class="full" name="message" placeholder="Tell us what you need" aria-label="Project needs"></textarea>
-        <button class="full" type="submit">Send enquiry</button>
+        <button class="full" type="submit">Send</button>
       </form>
     </div>
   </section>
@@ -438,7 +441,7 @@
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="wrap footer-inner">
-      <a class="brand" href="#top"><span class="diamond"></span>Meganeura Games</a>
+      <a class="brand" href="#top"><img class="brand-logo" src="Images/Icon_Rectangle.png" width="24" height="24" alt="" />Meganeura Games</a>
       <span class="copy">© 2026 Meganeura Games, game development studio</span>
     </div>
   </footer>
@@ -451,7 +454,7 @@
     <div class="lightbox-inner" id="lightboxInner"></div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Mobile nav toggle
     (function () {
       var toggle = document.getElementById('navToggle');
@@ -475,10 +478,10 @@
     //  Each object below is one slide. Copy a block, change the fields,
     //  and the carousel updates itself (arrows/dots appear automatically).
     //    title  : project name
-    //    url    : optional link for the project title
+    //    url    : optional link for the project title, opens in a new tab
     //    lede   : short paragraph
     //    stats  : up to 3 { big, sub } pairs (optional, can be [])
-    //    image  : main feature image (src + alt, optional width and height) shown when there's no video
+    //    image  : main feature image (src + alt, optional cropToFill) shown when there's no video
     //    video  : optional { src, poster } to show a
     //             GIF-like clip that autoplays, loops and is muted (no
     //             controls, no click). `poster` shows only while the clip
@@ -506,12 +509,22 @@
       },
       {
         title: 'Bacia Hidrográfica Virtual',
-        lede: 'The Federal University of Minas Gerais (UFMG) hired us to develop this educational game about how human activity shapes a watershed. Players collect litter as a fish, make farming decisions, connect sewers to a treatment plant, investigate pollution, plan land use, and test nature-based solutions to urban flooding.',
-        image: { src: 'Images/BHV/splash.webp', alt: 'BHV splash art with a 3D watershed diorama', width: 1818, height: 1417 },
+        lede: 'The Federal University of Minas Gerais (UFMG) hired us to develop this educational game about how human activity shapes a watershed. Players plan land use, connect sewers to a treatment plant, investigate environmental crimes, make farming decisions, and test nature-based solutions to urban flooding.',
+        image: { src: 'Images/BHV/splash.webp', alt: 'BHV splash art with a 3D watershed diorama', cropToFill: true },
         shots: [
           { src: 'Images/BHV/lake.webp', alt: 'Lake minigame with a fish, underwater litter, and an oxygen meter' },
           { src: 'Images/BHV/farm.webp', alt: 'Farming minigame with irrigated crops and a harvest card' },
           { src: 'Images/BHV/main-menu.webp', alt: 'BHV main menu with a 3D watershed model' }
+        ]
+      },
+      {
+        title: 'Paletas',
+        lede: 'Paletas de Minas is an educational coloring game that explores the culture of Minas Gerais. Join Tico the maned wolf to color 20 illustrated scenes, from the streets of Ouro Preto to the waterfalls of Serra do Cipó. Finishing each picture unlocks a note about the place or tradition it depicts. The project was funded through Minas Gerais’s PNAB Edital 08/2024.',
+        image: { src: 'Images/Paletas/artwork.webp', alt: 'Three Paletas illustrations showing Ouro Preto, Tico the maned wolf, and Serra da Canastra' },
+        shots: [
+          { src: 'Images/Paletas/serra-do-cipo.png', alt: 'Finished Paletas illustration of a waterfall in Serra do Cipó' },
+          { src: 'Images/Paletas/festa-do-rosario.png', alt: 'Finished Paletas illustration of dancers at the Festa do Rosário' },
+          { src: 'Images/Paletas/instruments.webp', alt: 'Finished Paletas illustration of traditional musical instruments' }
         ]
       }
       // ,{
@@ -541,7 +554,7 @@
       function slideHTML(p) {
         var title = esc(p.title);
         if (p.url) {
-          title = '<a href="' + esc(p.url) + '">' + title + '</a>';
+          title = '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + title + '</a>';
         }
         var stats = (p.stats || []).map(function (s) {
           return '<div class="stat"><div class="big">' + esc(s.big) +
@@ -565,14 +578,15 @@
                 ' autoplay loop muted playsinline preload="metadata"></video>' +
             '</div>';
         } else {
-          var imageDimensions = p.image.width && p.image.height
-            ? ' width="' + esc(p.image.width) + '" height="' + esc(p.image.height) + '"'
-            : '';
+          var imageSrc = esc(p.image.src);
+          var frameClass = p.image.cropToFill ? ' crop-to-fill' : '';
+          var backdrop = p.image.cropToFill ? '' :
+            '<img class="work-image-backdrop" src="' + imageSrc + '" alt="" />';
           feature =
-            '<div class="ph orange ord-img media' + (imageDimensions ? ' use-image-ratio' : '') +
-              '" tabindex="0" role="button" aria-label="View ' + esc(imgAlt) +
-              '" data-image="' + esc(p.image.src) + '" data-alt="' + esc(p.image.alt || '') + '">' +
-              '<img src="' + esc(p.image.src) + '" alt="' + esc(p.image.alt || '') + '"' + imageDimensions + ' />' +
+            '<div class="ph orange ord-img media' + frameClass + '" tabindex="0" role="button" aria-label="View ' + esc(imgAlt) +
+              '" data-image="' + imageSrc + '" data-alt="' + esc(p.image.alt || '') + '">' +
+              backdrop +
+              '<img class="work-image" src="' + imageSrc + '" alt="' + esc(p.image.alt || '') + '" />' +
             '</div>';
         }
 
@@ -713,6 +727,7 @@
       var FORMSPREE_ID = 'xzbayewp';
       var form = document.getElementById('contactForm');
       var btn = form.querySelector('button[type="submit"]');
+      var sendLabel = btn.textContent;
 
       form.setAttribute('action', 'https://formspree.io/f/' + FORMSPREE_ID);
       form.setAttribute('method', 'POST');
@@ -721,7 +736,7 @@
         e.preventDefault();
         if (FORMSPREE_ID === 'YOUR_FORM_ID') {
           btn.textContent = 'Set your Formspree ID first';
-          setTimeout(function () { btn.textContent = 'Send enquiry'; }, 2400);
+          setTimeout(function () { btn.textContent = sendLabel; }, 2400);
           return;
         }
         btn.textContent = 'Sending…';
@@ -735,7 +750,7 @@
           if (res.ok) {
             btn.textContent = 'Thanks! We\'ll be in touch ✓';
             form.reset();
-            setTimeout(function () { btn.textContent = 'Send enquiry'; btn.disabled = false; }, 4000);
+            setTimeout(function () { btn.textContent = sendLabel; btn.disabled = false; }, 4000);
           } else {
             return res.json().then(function (data) { throw data; });
           }
@@ -744,7 +759,7 @@
           var msg = (err && err.errors) ? err.errors.map(function (e) { return e.message; }).join(', ') : 'Something went wrong';
           btn.textContent = msg;
           btn.disabled = false;
-          setTimeout(function () { btn.textContent = 'Send enquiry'; }, 3000);
+          setTimeout(function () { btn.textContent = sendLabel; }, 3000);
         });
       });
     })();
