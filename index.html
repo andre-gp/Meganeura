@@ -334,8 +334,8 @@
     html { scroll-padding-top: 59px; }
     .nav-inner { height: 58px; }
     .nav-toggle {
-      flex-direction: row; align-items: center; gap: 10px; min-height: 44px;
-      padding: 0 0 0 12px; color: var(--ink); font-weight: 700;
+      align-items: center; justify-content: center; min-width: 44px; min-height: 44px;
+      padding: 0;
     }
     .nav-toggle-icon { display: grid; gap: 5px; }
     .nav-links { visibility: hidden; }
@@ -444,8 +444,8 @@
   <nav class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top"><img class="brand-logo" src="Images/Icon_Rectangle.png" width="32" height="32" alt="" />Meganeura Games</a>
-      <button class="nav-toggle" id="navToggle" type="button" aria-controls="navLinks" aria-expanded="false">
-        Menu <span class="nav-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
+        <span class="nav-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
       <div class="nav-links" id="navLinks">
         <a class="lnk" href="#top">Home</a>
