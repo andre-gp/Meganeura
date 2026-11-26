@@ -106,10 +106,10 @@
     margin-left: auto; display: none; flex-direction: column; gap: 5px;
     background: none; border: none; padding: 8px;
   }
-  .nav-toggle span { width: 22px; height: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
-  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-toggle-icon i { width: 22px; height: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
+  .nav-toggle.open i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open i:nth-child(2) { opacity: 0; }
+  .nav-toggle.open i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   @media (max-width: 859px) {
     .nav-toggle { display: flex; }
@@ -203,10 +203,9 @@
   /* Stage flanks the clipped carousel with a translucent arrow on each side */
   #work { --work-gutter: 64px; }
   #work:has(.work-carousel.single) { --work-gutter: 0px; }
-  .work-label { margin: 0 var(--work-gutter) 34px; }
+  .work-label { margin: 0 var(--work-gutter) 34px; font-weight: 400; }
   .work-stage { position: relative; }
   .work-controls { display: contents; }
-  .work-controls-bottom { display: none; }
   .work-carousel { overflow: hidden; margin-inline: var(--work-gutter); }
   .work-track { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; }
   .work-slide {
@@ -247,19 +246,8 @@
   .work-dot:hover { transform: scale(1.3); }
   .work-dot[aria-selected="true"] { background: var(--orange); border-color: var(--orange); }
   .work-dots.single { display: none; }
-  @media (max-width: 859px) {
-    #work { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px; }
-    .work-label, .work-carousel { margin: 0; }
-    .work-stage { display: contents; }
-    .work-controls { display: flex; gap: 8px; }
-    .work-controls-bottom { grid-column: 1 / -1; justify-content: center; }
-    .work-arrow { position: static; transform: none; width: 44px; height: 44px; }
-    .work-arrow:active { transform: scale(0.93); }
-    .work-arrow svg { width: 18px; height: 18px; }
-    .work-carousel { grid-column: 1 / -1; }
-    .work-dots { display: none; }
-  }
   .work-controls[hidden] { display: none; }
+  .work-mobile, .nav-links .nav-work { display: none; }
 
   /* ---------- Contact (orange) ---------- */
   .contact { background: var(--orange); }
@@ -341,6 +329,109 @@
   @media (prefers-reduced-motion: reduce) {
     .lightbox, .lightbox-inner, .ph.media img { transition: none; }
   }
+
+  @media (max-width: 859px) {
+    html { scroll-padding-top: 59px; }
+    .nav-inner { height: 58px; }
+    .nav-toggle {
+      flex-direction: row; align-items: center; gap: 10px; min-height: 44px;
+      padding: 0 0 0 12px; color: var(--ink); font-weight: 700;
+    }
+    .nav-toggle-icon { display: grid; gap: 5px; }
+    .nav-links { visibility: hidden; }
+    .nav-links.open { visibility: visible; max-height: calc(100dvh - 59px); overflow: auto; }
+    .nav-links a.lnk { color: var(--ink); padding-block: 13px; min-height: 48px; }
+    .nav-links .nav-work { display: block; }
+    .nav-links .nav-cta { display: block; min-height: 44px; }
+
+    .hero { padding-top: 32px; padding-bottom: 24px; }
+    .hero h1 { font-size: clamp(32px, 7.5vw, 54px); }
+    .hero .ph { aspect-ratio: 16 / 9; }
+    .hero-actions .btn { min-height: 46px; padding-inline: 13px; }
+    .hero-actions .btn-primary { color: var(--ink); }
+    .hero .lede, .sec-head p, .svc p, .trust .label { color: #61594f; }
+    .trust-inner { display: grid; gap: 12px; padding-block: 18px; }
+    .trust .items { margin: 0; gap: 10px 24px; }
+    .trust .items span { font-size: 14px; }
+    .sec { padding-block: 48px; }
+    .sec-head { gap: 10px; margin-bottom: 24px; }
+    .sec-head h2 { font-size: clamp(29px, 5.8vw, 40px); }
+    .svc { padding: 16px; min-height: 0; }
+    .svc h3 { font-size: 17px; margin-bottom: 6px; }
+    .process h2 { margin-bottom: 26px; }
+    .step { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; padding-left: 14px; }
+    .step .num { margin: 4px 0 0; }
+    .step h3 { margin-bottom: 4px; font-size: 19px; }
+    .step p { grid-column: 2; color: rgba(246, 243, 236, 0.72); }
+
+    #work .work-stage, #work .work-dots, #workCount { display: none; }
+    .work-label {
+      margin: 0 auto 20px; max-width: 620px; color: var(--ink);
+      font: 600 clamp(32px, 6vw, 42px) / 1.05 var(--disp);
+      letter-spacing: -0.03em; text-transform: none;
+    }
+    .work-mobile { display: grid; gap: 20px; max-width: 620px; margin-inline: auto; }
+    .work-card { min-width: 0; border: 1px solid var(--line); border-radius: 4px; background: #fffaf2; }
+    .work-card summary { display: block; list-style: none; cursor: pointer; }
+    .work-card summary::-webkit-details-marker { display: none; }
+    .work-card-cover {
+      width: 100%; aspect-ratio: var(--cover-ratio, 16 / 9); object-fit: cover;
+      border-radius: 3px 3px 0 0;
+    }
+    .work-card-title {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 12px 14px; font: 600 clamp(19px, 5vw, 26px) / 1.15 var(--disp);
+      letter-spacing: -0.02em;
+    }
+    .work-card-toggle {
+      display: grid; place-items: center; flex: none; width: 34px; height: 34px;
+      border: 1px solid var(--line); border-radius: 50%;
+    }
+    .work-card-toggle svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.5; }
+    .work-card[open] .work-card-toggle { background: var(--ink); color: var(--paper); }
+    .work-card[open] .work-card-toggle .vertical { visibility: hidden; }
+    .work-card-body { padding: 14px; border-top: 1px solid var(--line); }
+    .work-card-body .lede { font-size: 16px; line-height: 1.55; color: #534b40; }
+    .work-card-body .work-stats { gap: 12px 20px; margin-top: 14px; }
+    .work-card-gallery {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+      gap: 6px; margin-top: 14px;
+    }
+    .work-card-gallery .ph {
+      aspect-ratio: 4 / 3; min-height: 44px; padding: 0; border: 0; border-radius: 2px;
+    }
+    .work-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .work-card-actions .btn { min-height: 44px; padding: 8px 12px; font-size: 14px; gap: 8px; }
+    .work-card-actions img { width: 17px; height: 17px; }
+    .work-card summary:focus-visible, .work-card-actions .btn:focus-visible {
+      outline: 2px solid var(--ink); outline-offset: 2px;
+    }
+
+    .contact-inner { gap: 24px; padding-block: 48px; }
+    .contact h2 { margin-bottom: 12px; }
+    .contact .lede { margin-bottom: 12px; }
+    .contact .mailto { min-height: 44px; overflow-wrap: anywhere; }
+    .form { gap: 12px; }
+    .form input, .form textarea { font-size: 16px; min-width: 0; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; padding-block: 24px; }
+    .footer .brand { min-height: 44px; }
+    .footer .copy { margin-left: 0; }
+    .lightbox-inner { max-width: 100%; }
+    .lightbox-inner img, .lightbox-inner video { max-height: calc(100dvh - 128px); }
+    .lightbox-close { top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+  }
+  @media (max-width: 719px) {
+    :root { --pad: clamp(16px, 5vw, 24px); }
+  }
+  @media (max-width: 379px) {
+    .hero-actions { display: grid; }
+  }
+  @media (min-width: 380px) and (max-width: 559px) {
+    .grid-svc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) and (max-width: 859px) {
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
@@ -348,12 +439,12 @@
   <nav class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top"><img class="brand-logo" src="Images/Icon_Rectangle.png" width="32" height="32" alt="" />Meganeura Games</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="nav-toggle" id="navToggle" type="button" aria-controls="navLinks" aria-expanded="false">
+        Menu <span class="nav-toggle-icon" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
       <div class="nav-links" id="navLinks">
         <a class="lnk" href="#top">Home</a>
-        <!-- <a class="lnk" href="#work">Games</a> -->
+        <a class="lnk nav-work" href="#work">Selected work</a>
         <a class="lnk" href="#about">About us</a>
         <a class="nav-cta" href="#contact">Contact Us</a>
       </div>
@@ -368,7 +459,12 @@
       <a class="btn btn-primary" href="#contact">Tell us about your project</a>
       <a class="btn btn-ghost" href="#work">See our work</a>
     </div>
-    <div class="ph"><img src="Images/WallPaper1920_1080.png" alt="Farm Your Friends characters on a path between farm fields" /></div>
+    <div class="ph">
+      <picture>
+        <source media="(max-width: 859px)" srcset="Images/farm-your-friends-hero-mobile.webp" />
+        <img src="Images/WallPaper1920_1080.png" alt="Farm Your Friends characters on a path between farm fields" />
+      </picture>
+    </div>
   </header>
 
   <!-- ============ TRUST STRIP ============ -->
@@ -418,10 +514,12 @@
   <!-- ============ WORK ============ -->
   <!--
     To add / edit projects, jump to the PROJECTS array near the bottom of this
-    file (in the <script>). Each object defines one slide.
+    file (in the <script>). Each object defines a desktop slide and a mobile card.
   -->
-  <section class="wrap sec" id="work">
-    <div class="eyebrow work-label">Selected work</div>
+  <section class="wrap sec" id="work" aria-labelledby="workHeading">
+    <h2 class="eyebrow work-label" id="workHeading">Selected work</h2>
+
+    <div class="work-mobile" id="workMobile"></div>
 
     <div class="work-stage">
       <div class="work-controls">
@@ -435,15 +533,6 @@
 
       <div class="work-carousel" id="workCarousel">
         <div class="work-track" id="workTrack"><!-- slides injected by JS --></div>
-      </div>
-
-      <div class="work-controls work-controls-bottom">
-        <button class="work-arrow work-arrow-prev" type="button" aria-label="Previous project">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
-        </button>
-        <button class="work-arrow work-arrow-next" type="button" aria-label="Next project">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-        </button>
       </div>
     </div>
 
@@ -491,33 +580,41 @@
     (function () {
       var toggle = document.getElementById('navToggle');
       var links = document.getElementById('navLinks');
-      toggle.addEventListener('click', function () {
-        var open = links.classList.toggle('open');
+      function setMenu(open) {
+        links.classList.toggle('open', open);
         toggle.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', String(open));
+      }
+      toggle.addEventListener('click', function () {
+        setMenu(toggle.getAttribute('aria-expanded') === 'false');
       });
       links.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') {
-          links.classList.remove('open');
-          toggle.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
+        if (e.target.closest('a')) setMenu(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && links.classList.contains('open')) {
+          setMenu(false);
+          toggle.focus();
         }
       });
+      document.addEventListener('click', function (e) {
+        if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) {
+          setMenu(false);
+        }
+      });
+      window.matchMedia('(max-width: 859px)').addEventListener('change', function () { setMenu(false); });
     })();
 
     // ====================================================================
     //  Add or edit Selected Work projects below.
-    //  Each object below is one slide. Copy a block, change the fields,
-    //  and the carousel updates itself (arrows/dots appear automatically).
+    //  Both the desktop carousel and the mobile cards use these entries.
     //    title  : project name
     //    steamUrl : optional Steam store link beside the project title, opens in a new tab
     //    lede   : short paragraph
     //    stats  : up to 3 { big, sub } pairs (optional, can be [])
-    //    image  : main feature image (src + alt, optional cropToFill) shown when there's no video
-    //    video  : optional { src, poster } to show a
-    //             GIF-like clip that autoplays, loops and is muted (no
-    //             controls, no click). `poster` shows only while the clip
-    //             loads; falls back to `image.src` if none is given.
+    //    image  : main feature image (src + alt, optional cropToFill or mobileAspectRatio)
+    //    video  : optional { src, poster, mobileSrc, mobilePoster }.
+    //             Autoplays muted on desktop and plays on demand on mobile.
     //    shots  : row of smaller screenshots (0–3 look best; optional)
     //  Clicking a still image opens it in a centred preview overlay.
     // ====================================================================
@@ -528,7 +625,12 @@
         lede: 'Farm Your Friends is a competitive multiplayer farming game we developed entirely in-house. Team up or compete in local matches or online with up to eight players. Grow crops, protect your animals, and raid rival farms to earn the most coins.',
         image: { src: 'Images/Prints/Video_Thumbnail.png', alt: 'Farm Your Friends gameplay' },
         // Replace `src` with the real gameplay clip when it's ready.
-        video: { src: 'Images/Site_BackgroundVideo.mp4', poster: 'Images/Prints/Video_Thumbnail.png' },
+        video: {
+          src: 'Images/Site_BackgroundVideo.mp4',
+          poster: 'Images/Prints/Video_Thumbnail.png',
+          mobileSrc: 'Images/Prints/farm-your-friends-gameplay-mobile.mp4',
+          mobilePoster: 'Images/Prints/farm-your-friends-cover-mobile.webp'
+        },
         shots: [
           { src: 'Images/Prints/print1.jpg', alt: 'Farm Your Friends screenshot 1' },
           { src: 'Images/Prints/print2.jpg', alt: 'Farm Your Friends screenshot 2' },
@@ -538,7 +640,12 @@
       {
         title: 'Bacia Hidrográfica Virtual',
         lede: 'The Federal University of Minas Gerais (UFMG) hired us to develop this educational game about how human activity shapes a watershed. Players plan land use, connect sewers to a treatment plant, investigate environmental crimes, make farming decisions, and test nature-based solutions to urban flooding.',
-        image: { src: 'Images/BHV/splash.webp', alt: 'BHV splash art with a 3D watershed diorama', cropToFill: true },
+        image: {
+          src: 'Images/BHV/splash.webp',
+          alt: 'BHV splash art with a 3D watershed diorama',
+          cropToFill: true,
+          mobileAspectRatio: '1818 / 1417'
+        },
         shots: [
           { src: 'Images/BHV/lake.webp', alt: 'Lake minigame with a fish, underwater litter, and an oxygen meter' },
           { src: 'Images/BHV/farm.webp', alt: 'Farming minigame with irrigated crops and a harvest card' },
@@ -568,16 +675,55 @@
     ];
 
     (function () {
+      var work = document.getElementById('work');
+      var mobile = document.getElementById('workMobile');
+      var mobileLayout = window.matchMedia('(max-width: 859px)');
       var track = document.getElementById('workTrack');
-      var dotsWrap = document.getElementById('workDots');
-      var count = document.getElementById('workCount');
-      var carousel = document.getElementById('workCarousel');
-      if (!track) return;
 
       function esc(s) {
         return String(s).replace(/[&<>"]/g, function (c) {
           return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
         });
+      }
+
+      function projectStats(p) {
+        if (!p.stats || !p.stats.length) return '';
+        return '<div class="work-stats">' + p.stats.map(function (s) {
+          return '<div class="stat"><div class="big">' + esc(s.big) +
+            '</div><div class="sub">' + esc(s.sub) + '</div></div>';
+        }).join('') + '</div>';
+      }
+
+      function cardHTML(p) {
+        var title = esc(p.title);
+        var video = p.video;
+        var videoSrc = video && (video.mobileSrc || video.src);
+        var cover = (videoSrc && (video.mobilePoster || video.poster)) || (p.image && p.image.src);
+        var coverRatio = p.image && p.image.mobileAspectRatio;
+        var artwork = cover ? '<img class="work-card-cover" src="' + esc(cover) + '"' +
+          (coverRatio ? ' style="--cover-ratio: ' + esc(coverRatio) + '"' : '') +
+          ' alt="" loading="lazy" decoding="async" />' : '';
+        var gallery = (p.shots || []).map(function (shot) {
+          return '<button class="ph media" type="button" aria-label="View ' + esc(shot.alt || 'screenshot') +
+            '" data-image="' + esc(shot.src) + '" data-alt="' + esc(shot.alt || '') + '">' +
+            '<img src="' + esc(shot.src) + '" alt="" loading="lazy" decoding="async" /></button>';
+        }).join('');
+        var gameplay = videoSrc ?
+          '<button class="btn btn-ghost" type="button" data-video="' + esc(videoSrc) + '">Watch gameplay</button>' : '';
+        var steam = p.steamUrl ?
+          '<a class="btn btn-ghost" href="' + esc(p.steamUrl) + '" target="_blank" rel="noopener">' +
+            '<img src="Images/steam.svg" alt="" width="17" height="17" />View on Steam</a>' : '';
+
+        return '<details class="work-card"><summary>' + artwork +
+          '<span class="work-card-title">' + title +
+            '<span class="work-card-toggle" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none">' +
+              '<path d="M2 8h12" /><path class="vertical" d="M8 2v12" />' +
+            '</svg></span>' +
+          '</span></summary>' +
+          '<div class="work-card-body"><p class="lede">' + esc(p.lede) + '</p>' + projectStats(p) +
+            (gallery ? '<div class="work-card-gallery">' + gallery + '</div>' : '') +
+            (gameplay || steam ? '<div class="work-card-actions">' + gameplay + steam + '</div>' : '') +
+          '</div></details>';
       }
 
       function slideHTML(p) {
@@ -586,10 +732,6 @@
           '<a class="work-steam" href="' + esc(p.steamUrl) + '" target="_blank" rel="noopener" aria-label="View ' + title + ' on Steam">' +
             '<img src="Images/steam.svg" alt="" width="28" height="28" />' +
           '</a>' : '';
-        var stats = (p.stats || []).map(function (s) {
-          return '<div class="stat"><div class="big">' + esc(s.big) +
-            '</div><div class="sub">' + esc(s.sub) + '</div></div>';
-        }).join('');
         var shots = (p.shots || []).map(function (s) {
           return '<div class="ph media" tabindex="0" role="button" aria-label="View ' + esc(s.alt || 'screenshot') +
             '" data-image="' + esc(s.src) + '" data-alt="' + esc(s.alt || '') + '">' +
@@ -625,80 +767,85 @@
             '<div>' +
               '<div class="work-title"><h2>' + title + '</h2>' + steamLink + '</div>' +
               '<p class="lede">' + esc(p.lede) + '</p>' +
-              (stats ? '<div class="work-stats">' + stats + '</div>' : '') +
+              projectStats(p) +
             '</div>' +
             feature +
           '</div>' +
           (shots ? '<div class="work-shots">' + shots + '</div>' : '');
       }
 
-      var total = PROJECTS.length;
-      var single = total <= 1;
-      function slideEl(p) {
-        return '<div class="work-slide" role="group" aria-roledescription="slide">' + slideHTML(p) + '</div>';
-      }
+      function mountCarousel() {
+        var dotsWrap = document.getElementById('workDots');
+        var count = document.getElementById('workCount');
+        var carousel = document.getElementById('workCarousel');
+        var total = PROJECTS.length;
+        var single = total <= 1;
+        var current = 0;
 
-      track.innerHTML = PROJECTS.map(slideEl).join('');
-      var slides = Array.prototype.slice.call(track.children);
+        track.innerHTML = PROJECTS.map(function (p) {
+          return '<div class="work-slide" role="group" aria-roledescription="slide">' + slideHTML(p) + '</div>';
+        }).join('');
+        var slides = Array.from(track.children);
 
-      // Build dots (one per real project)
-      dotsWrap.innerHTML = PROJECTS.map(function (p, i) {
-        return '<button class="work-dot" type="button" role="tab" aria-label="' +
-          esc(p.title) + '" data-i="' + i + '"></button>';
-      }).join('');
-      var dots = Array.prototype.slice.call(dotsWrap.children);
+        dotsWrap.innerHTML = PROJECTS.map(function (p) {
+          return '<button class="work-dot" type="button" role="tab" aria-label="' + esc(p.title) + '"></button>';
+        }).join('');
+        var dots = Array.from(dotsWrap.children);
+        work.querySelector('.work-controls').hidden = single;
+        dotsWrap.classList.toggle('single', single);
+        carousel.classList.toggle('single', single);
 
-      // Hide chrome when there's only one project
-      document.querySelectorAll('#work .work-controls').forEach(function (controls) {
-        controls.hidden = single;
-      });
-      dotsWrap.classList.toggle('single', single);
-      carousel.classList.toggle('single', single);
-
-      var current = 0;
-
-      function sync() {
-        count.textContent = (current + 1) + ' / ' + total;
-        slides.forEach(function (slide, i) {
-          var hidden = i !== current;
-          slide.setAttribute('aria-hidden', String(hidden));
-          slide.inert = hidden;
-        });
-        dots.forEach(function (dot, i) { dot.setAttribute('aria-selected', String(i === current)); });
-      }
-
-      function goTo(index) {
-        if (index === current) return;
-        if (slides[current].contains(document.activeElement)) {
-          carousel.focus({ preventScroll: true });
+        function sync() {
+          count.textContent = (current + 1) + ' / ' + total;
+          slides.forEach(function (slide, i) {
+            var hidden = i !== current;
+            slide.setAttribute('aria-hidden', String(hidden));
+            slide.inert = hidden;
+          });
+          dots.forEach(function (dot, i) { dot.setAttribute('aria-selected', String(i === current)); });
         }
-        track.classList.add('is-changing');
-        current = index;
+
+        function goTo(index) {
+          if (index === current) return;
+          if (slides[current].contains(document.activeElement)) {
+            carousel.focus({ preventScroll: true });
+          }
+          track.classList.add('is-changing');
+          current = index;
+          sync();
+        }
+
+        function move(direction) {
+          if (!single) goTo((current + direction + total) % total);
+        }
+
+        document.getElementById('workPrev').addEventListener('click', function () { move(-1); });
+        document.getElementById('workNext').addEventListener('click', function () { move(1); });
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function () { goTo(i); });
+        });
+        carousel.setAttribute('tabindex', '0');
+        carousel.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') move(-1);
+          else if (e.key === 'ArrowRight') move(1);
+        });
         sync();
       }
 
-      function move(direction) {
-        goTo((current + direction + total) % total);
+      function syncWorkLayout() {
+        if (mobileLayout.matches && !mobile.hasChildNodes()) mobile.innerHTML = PROJECTS.map(cardHTML).join('');
+        if (!mobileLayout.matches && !track.children.length && PROJECTS.length) {
+          mountCarousel();
+          return;
+        }
+        track.querySelectorAll('video').forEach(function (video) {
+          if (mobileLayout.matches) video.pause();
+          else video.play().catch(function () { /* Autoplay can be blocked by the browser. */ });
+        });
       }
 
-      document.querySelectorAll('#work .work-arrow').forEach(function (arrow) {
-        var direction = arrow.classList.contains('work-arrow-prev') ? -1 : 1;
-        arrow.addEventListener('click', function () { move(direction); });
-      });
-      dots.forEach(function (d) {
-        d.addEventListener('click', function () { goTo(parseInt(d.getAttribute('data-i'), 10)); });
-      });
-
-      // Keep the desktop keyboard shortcuts when the carousel has focus.
-      var mobileLayout = window.matchMedia('(max-width: 859px)');
-      carousel.setAttribute('tabindex', '0');
-      carousel.addEventListener('keydown', function (e) {
-        if (mobileLayout.matches) return;
-        if (e.key === 'ArrowLeft') { move(-1); }
-        else if (e.key === 'ArrowRight') { move(1); }
-      });
-
-      sync();
+      syncWorkLayout();
+      mobileLayout.addEventListener('change', syncWorkLayout);
 
       // ---- Media preview (lightbox) ----------------------------------
       var lightbox = document.getElementById('lightbox');
@@ -706,9 +853,9 @@
       var lbClose = document.getElementById('lightboxClose');
       var lastFocus = null;
 
-      function openLightbox(html) {
+      function openLightbox(html, trigger) {
         lbInner.innerHTML = html;
-        lastFocus = document.activeElement;
+        lastFocus = trigger;
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -727,12 +874,15 @@
       function activate(el) {
         if (el.hasAttribute('data-image')) {
           openLightbox('<img src="' + esc(el.getAttribute('data-image')) +
-            '" alt="' + esc(el.getAttribute('data-alt') || '') + '" />');
+            '" alt="' + esc(el.getAttribute('data-alt') || '') + '" />', el);
+        } else if (el.hasAttribute('data-video')) {
+          openLightbox('<video src="' + esc(el.getAttribute('data-video')) +
+            '" aria-label="Gameplay video" autoplay muted controls playsinline></video>', el);
         }
       }
 
-      track.addEventListener('click', function (e) {
-        var el = e.target.closest && e.target.closest('.ph.media');
+      work.addEventListener('click', function (e) {
+        var el = e.target.closest('[data-image], [data-video]');
         if (el) activate(el);
       });
       track.addEventListener('keydown', function (e) {
