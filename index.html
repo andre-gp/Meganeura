@@ -89,8 +89,7 @@
     position: sticky; top: 0; z-index: 20; background: var(--paper);
     border-bottom: 1px solid var(--line);
   }
-  .nav-inner { display: flex; align-items: center; height: 72px; }
-  @media (min-width: 1024px) { .nav-inner { height: 84px; } }
+  .nav-inner { display: flex; align-items: center; height: 64px; }
   .brand {
     display: flex; align-items: center; gap: 12px; font-family: var(--disp);
     font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: var(--ink);
@@ -115,7 +114,7 @@
   @media (max-width: 859px) {
     .nav-toggle { display: flex; }
     .nav-links {
-      position: absolute; top: 72px; left: 0; right: 0; margin: 0;
+      position: absolute; top: 100%; left: 0; right: 0; margin: 0;
       flex-direction: column; align-items: stretch; gap: 0;
       background: var(--paper); border-bottom: 1px solid var(--line);
       max-height: 0; overflow: hidden; transition: max-height .28s ease;
@@ -126,20 +125,21 @@
   }
 
   /* ---------- Hero ---------- */
-  .hero { padding-top: 64px; padding-bottom: 64px; }
-  @media (min-width: 1024px) { .hero { padding-top: 96px; padding-bottom: 88px; } }
+  .hero { padding-top: clamp(28px, 4vw, 42px); padding-bottom: clamp(24px, 3vw, 36px); }
   .hero h1 {
-    font-family: var(--disp); font-weight: 600; font-size: clamp(40px, 7.2vw, 72px);
+    font-family: var(--disp); font-weight: 600; font-size: clamp(34px, 5.5vw, 60px);
     line-height: 1.02; letter-spacing: -0.03em; max-width: 940px; text-wrap: balance;
-    margin-top: 30px;
+    margin-top: 14px;
   }
   .hero .lede {
-    font-size: clamp(17px, 2.4vw, 21px); line-height: 1.55; color: var(--mut);
-    max-width: 620px; margin-top: 34px;
+    font-size: clamp(17px, 2vw, 19px); line-height: 1.5; color: var(--mut);
+    max-width: 620px; margin-top: 16px;
   }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 42px; }
-  .hero .ph { height: clamp(220px, 38vw, 420px); margin-top: 56px; }
-  @media (min-width: 1024px) { .hero .ph { margin-top: 64px; } }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .hero-actions .btn { padding: 11px 15px; font-size: 15px; }
+  .hero .ph { aspect-ratio: 16 / 9; margin-top: clamp(20px, 3vw, 32px); }
+  .hero .ph img { object-position: center 96%; }
+  @media (min-width: 720px) { .hero .ph { aspect-ratio: 7 / 3; } }
 
   /* ---------- Trust strip ---------- */
   .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -164,9 +164,9 @@
   .grid-svc { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
   @media (min-width: 560px) { .grid-svc { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 960px) { .grid-svc { grid-template-columns: repeat(4, 1fr); } }
-  .svc { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 26px 34px; min-height: 188px; transition: background .2s; }
+  .svc { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px; min-height: 140px; transition: background .2s; }
   .svc:hover { background: rgba(244, 151, 68, 0.06); }
-  .svc h3 { font-family: var(--disp); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; margin: 22px 0 10px; line-height: 1.15; }
+  .svc h3 { font-family: var(--disp); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; margin: 0 0 10px; line-height: 1.15; }
   .svc p { font-size: 14.5px; line-height: 1.5; color: var(--mut); }
 
   /* ---------- Process (dark) ---------- */
@@ -333,12 +333,12 @@
   <header class="wrap hero" id="top">
     <div class="eyebrow">Game development outsourcing</div>
     <h1>Full-cycle game development, handled in one studio.</h1>
-    <p class="lede">Meganeura is a game studio that brings art, code, animation and audio together under one roof, from first concept to launch. No vendor juggling, no handoffs lost in translation.</p>
+    <p class="lede">Meganeura is a game studio that brings art, code, animation and audio together under one roof, from first concept to launch.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#contact">Tell us about your project</a>
       <a class="btn btn-ghost" href="#work">See our work</a>
     </div>
-    <div class="ph"><img src="Images/WallPaper1920_1080.png" alt="Meganeura Games studio showreel" /></div>
+    <div class="ph"><img src="Images/WallPaper1920_1080.png" alt="Farm Your Friends characters on a path between farm fields" /></div>
   </header>
 
   <!-- ============ TRUST STRIP ============ -->
@@ -361,14 +361,14 @@
       <p>Pick one team for a slice, or the whole pipeline end to end.</p>
     </div>
     <div class="grid-svc">
-      <div class="svc"><span class="mark-ring"></span><h3>Concept &amp; 2D Art</h3><p>Visual development, characters, environments, key art.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>3D Art &amp; Environments</h3><p>Modeling, texturing, optimization for any engine.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>Animation &amp; Rigging</h3><p>Character rigs, gameplay and cinematic animation.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>VFX</h3><p>Real-time effects that read clearly and run light.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>Programming</h3><p>Gameplay, tools and systems in Unity &amp; Unreal.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>Audio &amp; Music</h3><p>Original score, SFX and implementation.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>Game &amp; Level Design</h3><p>Systems, economy and level craft.</p></div>
-      <div class="svc"><span class="mark-ring"></span><h3>UI / UX</h3><p>Interface art and flows players understand instantly.</p></div>
+      <div class="svc"><h3>Concept &amp; 2D Art</h3><p>Visual development, characters, environments, key art.</p></div>
+      <div class="svc"><h3>3D Art &amp; Environments</h3><p>Modeling, texturing, optimization for any engine.</p></div>
+      <div class="svc"><h3>Animation &amp; Rigging</h3><p>Character rigs, gameplay and cinematic animation.</p></div>
+      <div class="svc"><h3>VFX</h3><p>Real-time effects that read clearly and run light.</p></div>
+      <div class="svc"><h3>Programming</h3><p>Gameplay, tools and systems in Unity &amp; Unreal.</p></div>
+      <div class="svc"><h3>Audio &amp; Music</h3><p>Original score, SFX and implementation.</p></div>
+      <div class="svc"><h3>Game &amp; Level Design</h3><p>Systems, economy and level craft.</p></div>
+      <div class="svc"><h3>UI &amp; UX</h3><p>Interface art and flows players understand instantly.</p></div>
     </div>
   </section>
 
@@ -422,9 +422,8 @@
       <form class="form" id="contactForm" novalidate>
         <input type="text" name="name" placeholder="Name" aria-label="Name" required />
         <input type="text" name="company" placeholder="Studio / company" aria-label="Studio or company" />
-        <input type="email" name="email" placeholder="Email" aria-label="Email" required />
-        <input type="text" name="need" placeholder="What do you need? (art, code, full game…)" aria-label="What do you need" />
-        <textarea class="full" name="message" placeholder="A few words about the project" aria-label="Message"></textarea>
+        <input class="full" type="email" name="email" placeholder="Email" aria-label="Email" required />
+        <textarea class="full" name="message" placeholder="Tell us what you need" aria-label="Project needs"></textarea>
         <button class="full" type="submit">Send enquiry</button>
       </form>
     </div>
